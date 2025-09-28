@@ -8,7 +8,7 @@ website:
     Course Projects for STA 9750 at Baruch College
   site-url: "https://chhinlama.github.io/STA9750-2025-FALL/"
   navbar:
-     left:
+    left:
       - href: index.qmd
         text: Home
       - href: mp01.qmd
