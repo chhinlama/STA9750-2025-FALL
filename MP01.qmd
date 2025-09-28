@@ -1,0 +1,293 @@
+---
+title: "MP01"
+---
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+```
+
+## Task 1: Data Acquisition
+# Downloading the files.
+```{r}
+if(!dir.exists(file.path("data", "mp01"))){
+    dir.create(file.path("data", "mp01"), showWarnings=FALSE, recursive=TRUE)
+}
+
+GLOBAL_TOP_10_FILENAME <- file.path("data", "mp01", "global_top10_alltime.csv")
+
+if(!file.exists(GLOBAL_TOP_10_FILENAME)){
+    download.file("https://www.netflix.com/tudum/top10/data/all-weeks-global.tsv", 
+                  destfile=GLOBAL_TOP_10_FILENAME)
+}
+
+COUNTRY_TOP_10_FILENAME <- file.path("data", "mp01", "country_top10_alltime.csv")
+
+if(!file.exists(COUNTRY_TOP_10_FILENAME)){
+    download.file("https://www.netflix.com/tudum/top10/data/all-weeks-countries.tsv", 
+                  destfile=COUNTRY_TOP_10_FILENAME)
+}
+```
+
+```{r}
+if(!require("tidyverse")) install.packages("tidyverse")
+library(readr)
+library(dplyr)
+
+GLOBAL_TOP_10 <- read_tsv(GLOBAL_TOP_10_FILENAME)
+```
+
+```{r}
+str(GLOBAL_TOP_10)
+```
+
+```{r}
+glimpse(GLOBAL_TOP_10)
+```
+
+## Task 2: Data Cleaning
+# Fix "N/A" values in season_title to NA.
+```{r}
+GLOBAL_TOP_10 <- GLOBAL_TOP_10 |>
+  mutate(season_title = if_else(season_title == "N/A", NA, season_title))
+
+# Confirm the fix
+glimpse(GLOBAL_TOP_10)
+```
+
+```{r}
+COUNTRY_TOP_10 <- COUNTRY_TOP_10 |>
+  mutate(season_title = if_else(season_title == "N/A", NA, season_title))
+
+# Confirm the fix
+glimpse(COUNTRY_TOP_10)
+```
+
+## Task 3: Data Import
+
+```{r}
+COUNTRY_TOP_10 <- read_tsv(COUNTRY_TOP_10_FILENAME, na = "N/A")
+
+# Confirm the fix
+glimpse(COUNTRY_TOP_10)
+```
+```{r}
+COUNTRY_TOP_10 <- read_tsv(COUNTRY_TOP_10_FILENAME, na = "N/A")
+
+
+# Check the structure
+glimpse(COUNTRY_TOP_10)
+
+```
+
+```{r}
+if(!require("DT")) install.packages("DT")
+library(DT)
+```
+
+# Show only first 20 rows.
+```{r}
+library(DT)
+GLOBAL_TOP_10 |> 
+    head(n=20) |>
+    datatable(options=list(searching=FALSE, info=FALSE))
+```
+
+# Formatting columns.
+```{r}
+library(stringr)
+format_titles <- function(df){
+    colnames(df) <- str_replace_all(colnames(df), "_", " ") |> str_to_title()
+    df
+}
+
+GLOBAL_TOP_10 |> 
+    format_titles() |>
+    head(n=20) |>
+    datatable(options=list(searching=FALSE, info=FALSE)) |>
+    formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
+```
+
+# Drop season_title
+```{r}
+GLOBAL_TOP_10 |> 
+    select(-season_title) |>
+    format_titles() |>
+    head(n=20) |>
+    datatable(options=list(searching=FALSE, info=FALSE)) |>
+    formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
+```
+
+# converting runtime: hours to minutes.
+```{r}
+GLOBAL_TOP_10 |> 
+    mutate(`runtime_(minutes)` = round(60 * runtime)) |>
+    select(-season_title, 
+           -runtime) |>
+    format_titles() |>
+    head(n=20) |>
+    datatable(options=list(searching=FALSE, info=FALSE)) |>
+    formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
+```
+
+## Task 4: Exploratory Questions
+
+```{r}
+# Required Packages
+if(!require("tidyverse")) install.packages("tidyverse")
+if(!require("DT")) install.packages("DT")
+if(!require("lubridate")) install.packages("lubridate")
+
+library(dplyr)
+library(readr)
+library(DT)
+library(lubridate)
+
+```
+
+# Q1. How many different countries does Netflix operate in? 
+# Netflix operates in 94 countries.
+
+```{r}
+country_count <- COUNTRY_TOP_10 |> 
+  distinct(country_iso2) |> 
+  nrow()
+```
+
+# Q2. Which non-English-language film has spent the most cumulative weeks in the global top 10? How many weeks did it spend?
+# The non-English film with the longest global Top 10 run is All Quiet on the Western Front with 23 weeks.
+
+```{r}
+non_english_film <- GLOBAL_TOP_10 |>
+  filter(category == "Films (Non-English)") |>
+  group_by(show_title) |>
+  summarise(total_weeks = max(cumulative_weeks_in_top_10, na.rm = TRUE)) |>
+  arrange(desc(total_weeks)) |>
+  slice(1)
+```
+
+# Q3. What is the longest film (English or non-English) to have ever appeared in the Netflix global Top 10? How long is it in minutes?
+# The longest film is Pushpa 2: The Rule (Reloaded Version) at 224 minutes.
+
+```{r}
+longest_film <- GLOBAL_TOP_10 |>
+  filter(str_detect(category, "Films")) |>
+  filter(!is.na(runtime)) |>
+  mutate(runtime_minutes = round(60 * runtime)) |>
+  arrange(desc(runtime_minutes)) |>
+  slice(1)
+```
+
+# Q4. For each of the four categories, what program has the most total hours of global viewership?
+
+```{r}
+if(!require(scales)) install.packages("scales")
+library(scales)
+GLOBAL_TOP_10 |>
+  mutate(show_title = if_else(is.na(season_title), show_title, season_title)) |>
+  group_by(category, show_title) |>
+  summarise(total_hours = sum(weekly_hours_viewed, na.rm = TRUE), .groups = "drop") |>
+  group_by(category) |>
+  slice_max(order_by = total_hours, n = 1, with_ties = FALSE) |>
+  arrange(category) |>
+  mutate(total_hours = comma(total_hours)) |>
+  datatable(
+    options = list(pageLength = 5, searching = FALSE, info = FALSE),
+    rownames = FALSE,
+    caption = "Programs with the Most Total Global Hours by Category"
+  )
+```
+# Q5. Which TV show had the longest run in a country’s Top 10? How long was this run and in what country did it occur?
+# Money Heist had the longest run with 127 weeks in Pakistan.
+
+```{r}
+longest_country_run <- COUNTRY_TOP_10 |>
+  filter(str_detect(category, "TV")) |>
+  group_by(country_name, show_title) |>
+  summarise(max_weeks = max(cumulative_weeks_in_top_10, na.rm = TRUE), .groups = "drop") |>
+  arrange(desc(max_weeks)) |>
+  slice(1)
+```
+
+# Q6. Netflix provides over 200 weeks of service history for all but one country in our data set. Which country is this and when did Netflix cease operations in that country?
+# Russia with 35 weeks; the last week in the dataset is February 27, 2022.
+
+```{r}
+country_coverage <- COUNTRY_TOP_10 |>
+  group_by(country_name) |>
+  summarise(
+    weeks_count  = n_distinct(week),
+    last_week = max(week, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  filter(weeks_count < 200) |>
+  arrange(weeks_count)
+```
+
+# Q7. What is the total viewership of the TV show Squid Game? 
+# Squid game has total hours of 5,048,300,000 globally (all seasons combined.)
+
+```{r}
+squid_game_hours <- GLOBAL_TOP_10 |>
+  filter(show_title == "Squid Game") |>
+  summarise(total_hours = sum(weekly_hours_viewed, na.rm = TRUE)) |>
+  pull(total_hours)
+```
+
+# Q8. The movie Red Notice has a runtime of 1 hour and 58 minutes. Approximately how many views did it receive in 2021?
+# In 2021, Red Notice received 0 views.
+
+```{r}
+red_notice_2021 <- GLOBAL_TOP_10 |>
+  filter(show_title == "Red Notice", year(week) == 2021) |>
+  summarise(total_views = sum(weekly_views, na.rm = TRUE)) |>
+  pull(total_views)
+```
+
+# Q9. How many Films reached Number 1 in the US but did not originally debut there?
+# 45 films reached #1 in the US. The most recent was "KPop Demon Hunters.
+
+```{r}
+us_films <- COUNTRY_TOP_10 |>
+  filter(country_name == "United States", str_detect(category, "Films")) |>
+  group_by(show_title) |>
+  arrange(week) |>
+  mutate(
+    ever_hit_1 = any(weekly_rank == 1),
+    debut_rank = first(weekly_rank)
+  ) |>
+  filter(ever_hit_1 == TRUE, debut_rank > 1) |>
+  ungroup() |>
+  distinct(show_title) |>
+  nrow()
+
+most_recent_film <- COUNTRY_TOP_10 |>
+  filter(country_name == "United States", str_detect(category, "Films")) |>
+  group_by(show_title) |>
+  arrange(week) |>
+  mutate(
+    ever_hit_1 = any(weekly_rank == 1),
+    debut_rank = first(weekly_rank),
+    latest_week = max(week)
+  ) |>
+  filter(ever_hit_1 == TRUE, debut_rank > 1) |>
+  ungroup() |>
+  arrange(desc(latest_week)) |>
+  slice(1)
+```
+
+# Q10. Which TV show/season hit the top 10 in the most countries in its debut week? In how many countries did it chart?
+# Emily in Paris hit the top 10 in 94 countries in its debut week.
+
+```{r}
+tv_debuts <- COUNTRY_TOP_10 |>
+  filter(str_detect(category, "TV")) |>
+  group_by(show_title) |>
+  filter(week == min(week)) |>
+  summarise(countries_count = n_distinct(country_name), .groups = "drop") |>
+  arrange(desc(countries_count)) |>
+  slice(1)
+```
+
+## Press Releases
+
