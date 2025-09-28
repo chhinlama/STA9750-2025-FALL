@@ -11,7 +11,7 @@ website:
    left:
       - href: index.qmd
         text: Home
-      - href: mp01.qmd
+      - href: mp01.html
         text: Mini Project 1
     
 format:
