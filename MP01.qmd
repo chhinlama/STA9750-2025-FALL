@@ -1,15 +1,13 @@
 ---
 title: "MP01"
+format: html
 ---
 
+# Task 1: Data Acquisition
+## Downloading the files.
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-```
-
-## Task 1: Data Acquisition
-# Downloading the files.
-```{r}
 if(!dir.exists(file.path("data", "mp01"))){
     dir.create(file.path("data", "mp01"), showWarnings=FALSE, recursive=TRUE)
 }
@@ -30,6 +28,8 @@ if(!file.exists(COUNTRY_TOP_10_FILENAME)){
 ```
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 if(!require("tidyverse")) install.packages("tidyverse")
 library(readr)
 library(dplyr)
@@ -38,16 +38,22 @@ GLOBAL_TOP_10 <- read_tsv(GLOBAL_TOP_10_FILENAME)
 ```
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 str(GLOBAL_TOP_10)
 ```
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 glimpse(GLOBAL_TOP_10)
 ```
 
-## Task 2: Data Cleaning
-# Fix "N/A" values in season_title to NA.
+# Task 2: Data Cleaning
+## Fix "N/A" values in season_title to NA.
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 GLOBAL_TOP_10 <- GLOBAL_TOP_10 |>
   mutate(season_title = if_else(season_title == "N/A", NA, season_title))
 
@@ -55,12 +61,16 @@ GLOBAL_TOP_10 <- GLOBAL_TOP_10 |>
 glimpse(GLOBAL_TOP_10)
 ```
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 COUNTRY_TOP_10 <- read_tsv(COUNTRY_TOP_10_FILENAME, na = "N/A")
 
 # Confirm the fix
 glimpse(COUNTRY_TOP_10)
 ```
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 COUNTRY_TOP_10 <- COUNTRY_TOP_10 |>
   mutate(season_title = if_else(season_title == "N/A", NA, season_title))
 
@@ -68,9 +78,11 @@ COUNTRY_TOP_10 <- COUNTRY_TOP_10 |>
 glimpse(COUNTRY_TOP_10)
 ```
 
-## Task 3: Data Import
+# Task 3: Data Import
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 COUNTRY_TOP_10 <- read_tsv(COUNTRY_TOP_10_FILENAME, na = "N/A")
 
 
@@ -80,20 +92,26 @@ glimpse(COUNTRY_TOP_10)
 ```
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 if(!require("DT")) install.packages("DT")
 library(DT)
 ```
 
-# Show only first 20 rows.
+## Show only first 20 rows.
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 library(DT)
 GLOBAL_TOP_10 |> 
     head(n=20) |>
     datatable(options=list(searching=FALSE, info=FALSE))
 ```
 
-# Formatting columns.
+## Formatting columns.
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 library(stringr)
 format_titles <- function(df){
     colnames(df) <- str_replace_all(colnames(df), "_", " ") |> str_to_title()
@@ -107,8 +125,10 @@ GLOBAL_TOP_10 |>
     formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
 ```
 
-# Drop season_title
+## Drop season_title
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 GLOBAL_TOP_10 |> 
     select(-season_title) |>
     format_titles() |>
@@ -117,8 +137,10 @@ GLOBAL_TOP_10 |>
     formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
 ```
 
-# converting runtime: hours to minutes.
+## Converting runtime: hours to minutes.
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 GLOBAL_TOP_10 |> 
     mutate(`runtime_(minutes)` = round(60 * runtime)) |>
     select(-season_title, 
@@ -129,9 +151,11 @@ GLOBAL_TOP_10 |>
     formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
 ```
 
-## Task 4: Exploratory Questions
+# Task 4: Exploratory Questions
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 # Required Packages
 if(!require("tidyverse")) install.packages("tidyverse")
 if(!require("DT")) install.packages("DT")
@@ -144,19 +168,25 @@ library(lubridate)
 
 ```
 
-# Q1. How many different countries does Netflix operate in? 
-# Netflix operates in 94 countries.
+Q1. How many different countries does Netflix operate in? 
+
+Netflix operates in 94 countries.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 country_count <- COUNTRY_TOP_10 |> 
   distinct(country_iso2) |> 
   nrow()
 ```
 
-# Q2. Which non-English-language film has spent the most cumulative weeks in the global top 10? How many weeks did it spend?
-# The non-English film with the longest global Top 10 run is All Quiet on the Western Front with 23 weeks.
+Q2. Which non-English-language film has spent the most cumulative weeks in the global top 10? How many weeks did it spend?
+
+The non-English film with the longest global Top 10 run is All Quiet on the Western Front with 23 weeks.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 non_english_film <- GLOBAL_TOP_10 |>
   filter(category == "Films (Non-English)") |>
   group_by(show_title) |>
@@ -165,10 +195,13 @@ non_english_film <- GLOBAL_TOP_10 |>
   slice(1)
 ```
 
-# Q3. What is the longest film (English or non-English) to have ever appeared in the Netflix global Top 10? How long is it in minutes?
-# The longest film is Pushpa 2: The Rule (Reloaded Version) at 224 minutes.
+Q3. What is the longest film (English or non-English) to have ever appeared in the Netflix global Top 10? How long is it in minutes?
+
+The longest film is Pushpa 2: The Rule (Reloaded Version) at 224 minutes.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 longest_film <- GLOBAL_TOP_10 |>
   filter(str_detect(category, "Films")) |>
   filter(!is.na(runtime)) |>
@@ -177,9 +210,11 @@ longest_film <- GLOBAL_TOP_10 |>
   slice(1)
 ```
 
-# Q4. For each of the four categories, what program has the most total hours of global viewership?
+Q4. For each of the four categories, what program has the most total hours of global viewership?
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 if(!require(scales)) install.packages("scales")
 library(scales)
 GLOBAL_TOP_10 |>
@@ -196,10 +231,13 @@ GLOBAL_TOP_10 |>
     caption = "Programs with the Most Total Global Hours by Category"
   )
 ```
-# Q5. Which TV show had the longest run in a country’s Top 10? How long was this run and in what country did it occur?
-# Money Heist had the longest run with 127 weeks in Pakistan.
+Q5. Which TV show had the longest run in a country’s Top 10? How long was this run and in what country did it occur?
+
+Money Heist had the longest run with 127 weeks in Pakistan.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 longest_country_run <- COUNTRY_TOP_10 |>
   filter(str_detect(category, "TV")) |>
   group_by(country_name, show_title) |>
@@ -208,10 +246,13 @@ longest_country_run <- COUNTRY_TOP_10 |>
   slice(1)
 ```
 
-# Q6. Netflix provides over 200 weeks of service history for all but one country in our data set. Which country is this and when did Netflix cease operations in that country?
-# Russia with 35 weeks; the last week in the dataset is February 27, 2022.
+Q6. Netflix provides over 200 weeks of service history for all but one country in our data set. Which country is this and when did Netflix cease operations in that country?
+
+Russia with 35 weeks; the last week in the dataset is February 27, 2022.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 country_coverage <- COUNTRY_TOP_10 |>
   group_by(country_name) |>
   summarise(
@@ -223,30 +264,38 @@ country_coverage <- COUNTRY_TOP_10 |>
   arrange(weeks_count)
 ```
 
-# Q7. What is the total viewership of the TV show Squid Game? 
-# Squid game has total hours of 5,048,300,000 globally (all seasons combined.)
+Q7. What is the total viewership of the TV show Squid Game? 
+
+Squid game has total hours of 5,048,300,000 globally (all seasons combined.)
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 squid_game_hours <- GLOBAL_TOP_10 |>
   filter(show_title == "Squid Game") |>
   summarise(total_hours = sum(weekly_hours_viewed, na.rm = TRUE)) |>
   pull(total_hours)
 ```
 
-# Q8. The movie Red Notice has a runtime of 1 hour and 58 minutes. Approximately how many views did it receive in 2021?
-# In 2021, Red Notice received 0 views.
+Q8. The movie Red Notice has a runtime of 1 hour and 58 minutes. Approximately how many views did it receive in 2021?
+In 2021, Red Notice received 0 views.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 red_notice_2021 <- GLOBAL_TOP_10 |>
   filter(show_title == "Red Notice", year(week) == 2021) |>
   summarise(total_views = sum(weekly_views, na.rm = TRUE)) |>
   pull(total_views)
 ```
 
-# Q9. How many Films reached Number 1 in the US but did not originally debut there?
-# 45 films reached #1 in the US. The most recent was "KPop Demon Hunters.
+Q9. How many Films reached Number 1 in the US but did not originally debut there?
+
+45 films reached #1 in the US. The most recent was "KPop Demon Hunters.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 us_films <- COUNTRY_TOP_10 |>
   filter(country_name == "United States", str_detect(category, "Films")) |>
   group_by(show_title) |>
@@ -275,10 +324,13 @@ most_recent_film <- COUNTRY_TOP_10 |>
   slice(1)
 ```
 
-# Q10. Which TV show/season hit the top 10 in the most countries in its debut week? In how many countries did it chart?
-# Emily in Paris hit the top 10 in 94 countries in its debut week.
+Q10. Which TV show/season hit the top 10 in the most countries in its debut week? In how many countries did it chart?
+
+Emily in Paris hit the top 10 in 94 countries in its debut week.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 tv_debuts <- COUNTRY_TOP_10 |>
   filter(str_detect(category, "TV")) |>
   group_by(show_title) |>
@@ -288,5 +340,99 @@ tv_debuts <- COUNTRY_TOP_10 |>
   slice(1)
 ```
 
-## Press Releases
+# Press Releases
+
+## Stranger Things Is Back: The Final Season Arrives in 2025
+
+The wait is almost over - Stranger Things is coming back for its fifth and final season at the end of 2025, and fans all over the world couldn’t be more excited. Over the years, the first four seasons have racked up about 2,967,980,000 of viewing hours globally, holding onto a spot in Netflix’s Top 10 for more than 50 weeks and reaching audiences in over 93 countries. While Wednesday and Bridgerton have had their big moments as per the comparison table; Stranger Things has managed to keep audiences hooked season after season, proving it’s in a league of its own. With its mix of supernatural thrills, 80s nostalgia, and heart, Stranger Things has become a true global phenomenon — and the final season promises to be the biggest chapter yet.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Total viewing hours
+st_hours <- GLOBAL_TOP_10 |>
+  filter(show_title == "Stranger Things") |>
+  summarise(total_hours = sum(weekly_hours_viewed, na.rm = TRUE)) |>
+  pull(total_hours)
+
+# Weeks in Top 10
+st_weeks <- GLOBAL_TOP_10 |>
+  filter(show_title == "Stranger Things") |>
+  summarise(total_weeks = sum(weekly_rank <= 10, na.rm = TRUE)) |>
+  pull(total_weeks)
+
+# Number of countries
+st_countries <- COUNTRY_TOP_10 |>
+  filter(show_title == "Stranger Things") |>
+  summarise(n_countries = n_distinct(country_name)) |>
+  pull(n_countries)
+
+# Comparison shows
+comparison <- GLOBAL_TOP_10 |>
+  filter(show_title %in% c("Wednesday", "Bridgerton")) |>
+  group_by(show_title) |>
+  summarise(total_hours = sum(weekly_hours_viewed, na.rm = TRUE),
+            total_weeks = sum(weekly_rank <= 10, na.rm = TRUE),
+            .groups = "drop")
+```
+
+## Netflix Finds Blockbuster Success in India With Hindi Hits
+
+India has quickly become one of Netflix’s most exciting growth markets with Hindi-language movies and shows pulling in massive audiences. Over the past year, Hindi films and TV series have racked up 183,000,000 hours of viewing time, proving that local content resonates strongly with audiences. Some of these blockbusters like Saiyaara and Mahavatar Narsimha shot straight to the Top 10 in India, even if they never appeared in the U.S. charts.
+
+This surge in viewership suggests Netflix’s customer base in India now numbers in the tens of millions, with steady growth over 221 weeks of consistent Top 10 appearances. Compared to other major markets, India is showing one of the fastest upward trends in regional viewership, making it a cornerstone of Netflix’s long-term global strategy. With a growing appetite for Hindi-language blockbusters and original TV shows, India is quickly proving to be not just a market, but a powerhouse of creativity and engagement.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+total_hindi_hours <- GLOBAL_TOP_10 |>
+  filter(category %in% c("Films (Non-English)", "TV (Non-English)"),
+         grepl("Hindi", show_title, ignore.case = TRUE) |
+         grepl("Hindi", season_title, ignore.case = TRUE)) |>
+  summarise(total_hours = sum(weekly_hours_viewed, na.rm = TRUE)) |>
+  pull(total_hours)
+
+hindi_growth_weeks <- COUNTRY_TOP_10 |>
+  filter(country_name == "India") |>
+  summarise(n_weeks = n_distinct(week)) |>
+  pull(n_weeks)
+
+india_only <- COUNTRY_TOP_10 |>
+  filter(country_name == "India") |>
+  distinct(show_title) |>
+  anti_join( # keep only titles NOT in the US Top 10
+    COUNTRY_TOP_10 |> filter(country_name == "United States") |>  distinct(show_title),
+    by = "show_title"
+  )
+ head(india_only, 5)
+```
+
+## Korean Dramas Continue to Take the World by Storm on Netflix
+
+Korean dramas and films have quickly become one of Netflix’s biggest global success stories. Breakout titles like Squid Game, All of Us Are Dead, and The Glory have not only captured audiences at home in Korea, but have also dominated viewing charts worldwide. Collectively, Korean shows and movies have generated approximately 136,810,000 of viewing hours, holding spots in the Top 10 across 77 countries.
+
+K-dramas, once seen as niche, now rival the biggest English-language hits in both viewership and cultural impact. Squid Game set record-breaking hours and charted in more countries than nearly any other Netflix series, while new Korean titles continue to land in the Top 10 week after week. This surge shows Netflix’s strength in bringing international stories to global audiences - and with more Korean originals on the way, the momentum isn’t slowing down.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+korean_hours <- GLOBAL_TOP_10 |>
+  filter(grepl("Korea", show_title, ignore.case = TRUE) |
+         grepl("Korea", season_title, ignore.case = TRUE)) |>
+  summarise(total_hours = sum(weekly_hours_viewed, na.rm = TRUE)) |>
+  pull(total_hours)
+
+scales::comma(korean_hours)
+
+korean_countries <- COUNTRY_TOP_10 |>
+  filter(grepl("Korea", show_title, ignore.case = TRUE) |
+         grepl("Korea", season_title, ignore.case = TRUE)) |>
+  summarise(n_countries = n_distinct(country_name)) |>
+  pull(n_countries)
+
+squid_game_stats <- GLOBAL_TOP_10 |>
+  filter(show_title == "Squid Game") |>
+  summarise(total_hours = sum(weekly_hours_viewed, na.rm = TRUE),
+            total_weeks = sum(weekly_rank <= 10, na.rm = TRUE))
+```
 

@@ -151,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./mp01.qmd"> 
+    <a class="nav-link" href="./mp01.html"> 
 <span class="menu-text">Mini Project 1</span></a>
   </li>  
 </ul>
@@ -188,12 +188,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="task-1-data-acquisition" class="level2">
-<h2 class="anchored" data-anchor-id="task-1-data-acquisition">Task 1: Data Acquisition</h2>
-</section>
-<section id="downloading-the-files." class="level1">
-<h1>Downloading the files.</h1>
+<section id="task-1-data-acquisition" class="level1">
+<h1>Task 1: Data Acquisition</h1>
+<section id="downloading-the-files." class="level2">
+<h2 class="anchored" data-anchor-id="downloading-the-files.">Downloading the files.</h2>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"mp01"</span>))){</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"mp01"</span>), <span class="at">showWarnings=</span><span class="cn">FALSE</span>, <span class="at">recursive=</span><span class="cn">TRUE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
@@ -211,9 +212,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">download.file</span>(<span class="st">"https://www.netflix.com/tudum/top10/data/all-weeks-countries.tsv"</span>, </span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">destfile=</span>COUNTRY_TOP_10_FILENAME)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: tidyverse</code></pre>
 </div>
@@ -229,10 +234,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>GLOBAL_TOP_10 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(GLOBAL_TOP_10_FILENAME)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 8840 Columns: 9
 ── Column specification ────────────────────────────────────────────────────────
@@ -246,7 +254,10 @@ date (1): week
 </div>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(GLOBAL_TOP_10)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>spc_tbl_ [8,840 × 9] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ week                      : Date[1:8840], format: "2025-09-21" "2025-09-21" ...
@@ -274,7 +285,10 @@ date (1): week
 </div>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(GLOBAL_TOP_10)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 8,840
 Columns: 9
@@ -289,18 +303,21 @@ $ weekly_views               &lt;dbl&gt; 21800000, 21200000, 7600000, 7200000, 6
 $ cumulative_weeks_in_top_10 &lt;dbl&gt; 2, 14, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 5, 1, …</code></pre>
 </div>
 </div>
-<section id="task-2-data-cleaning" class="level2">
-<h2 class="anchored" data-anchor-id="task-2-data-cleaning">Task 2: Data Cleaning</h2>
 </section>
 </section>
-<section id="fix-na-values-in-season_title-to-na." class="level1">
-<h1>Fix “N/A” values in season_title to NA.</h1>
+<section id="task-2-data-cleaning" class="level1">
+<h1>Task 2: Data Cleaning</h1>
+<section id="fix-na-values-in-season_title-to-na." class="level2">
+<h2 class="anchored" data-anchor-id="fix-na-values-in-season_title-to-na.">Fix “N/A” values in season_title to NA.</h2>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>GLOBAL_TOP_10 <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">season_title =</span> <span class="fu">if_else</span>(season_title <span class="sc">==</span> <span class="st">"N/A"</span>, <span class="cn">NA</span>, season_title))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm the fix</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(GLOBAL_TOP_10)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 8,840
 Columns: 9
@@ -316,7 +333,10 @@ $ cumulative_weeks_in_top_10 &lt;dbl&gt; 2, 14, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 5,
 </div>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>COUNTRY_TOP_10 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(COUNTRY_TOP_10_FILENAME, <span class="at">na =</span> <span class="st">"N/A"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 411760 Columns: 8
 ── Column specification ────────────────────────────────────────────────────────
@@ -328,8 +348,11 @@ date (1): week
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm the fix</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(COUNTRY_TOP_10)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 411,760
 Columns: 8
@@ -344,11 +367,14 @@ $ cumulative_weeks_in_top_10 &lt;dbl&gt; 1, 2, 14, 1, 1, 1, 2, 1, 5, 1, 2, 1, 7,
 </div>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>COUNTRY_TOP_10 <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">season_title =</span> <span class="fu">if_else</span>(season_title <span class="sc">==</span> <span class="st">"N/A"</span>, <span class="cn">NA</span>, season_title))</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm the fix</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(COUNTRY_TOP_10)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 411,760
 Columns: 8
@@ -362,10 +388,15 @@ $ season_title               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
 $ cumulative_weeks_in_top_10 &lt;dbl&gt; 1, 2, 14, 1, 1, 1, 2, 1, 5, 1, 2, 1, 7, 1, …</code></pre>
 </div>
 </div>
-<section id="task-3-data-import" class="level2">
-<h2 class="anchored" data-anchor-id="task-3-data-import">Task 3: Data Import</h2>
+</section>
+</section>
+<section id="task-3-data-import" class="level1">
+<h1>Task 3: Data Import</h1>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>COUNTRY_TOP_10 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(COUNTRY_TOP_10_FILENAME, <span class="at">na =</span> <span class="st">"N/A"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 411760 Columns: 8
 ── Column specification ────────────────────────────────────────────────────────
@@ -377,8 +408,11 @@ date (1): week
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the structure</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(COUNTRY_TOP_10)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 411,760
 Columns: 8
@@ -393,30 +427,39 @@ $ cumulative_weeks_in_top_10 &lt;dbl&gt; 1, 2, 14, 1, 1, 1, 2, 1, 5, 1, 2, 1, 7,
 </div>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"DT"</span>)) <span class="fu">install.packages</span>(<span class="st">"DT"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: DT</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-</section>
-<section id="show-only-first-20-rows." class="level1">
-<h1>Show only first 20 rows.</h1>
+<section id="show-only-first-20-rows." class="level2">
+<h2 class="anchored" data-anchor-id="show-only-first-20-rows.">Show only first 20 rows.</h2>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>GLOBAL_TOP_10 <span class="sc">|&gt;</span> </span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="at">n=</span><span class="dv">20</span>) <span class="sc">|&gt;</span></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datatable</span>(<span class="at">options=</span><span class="fu">list</span>(<span class="at">searching=</span><span class="cn">FALSE</span>, <span class="at">info=</span><span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-7aced9beb5b49254dff5" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7aced9beb5b49254dff5">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21"],["Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)"],[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],["The Wrong Paris","KPop Demon Hunters","Ice Road: Vengeance","aka Charlie Sheen","The Mule","Unknown Number: The High School Catfish","The Thursday Murder Club","Sonic the Hedgehog 3","War Dogs","Terror Comes Knocking: The Marcela Borges Story","She Said Maybe","Saiyaara","Fall for Me","Anaconda: Cursed Jungle","Mahavatar Narsimha","A Bright Lawyer","Love Untangled","Kontrabida Academy","Dasim","Inspector Zende"],[null,null,null,"aka Charlie Sheen: Season 1",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[38900000,35400000,14400000,21800000,10900000,7100000,7800000,6300000,5800000,4000000,12900000,11900000,4800000,3700000,5000000,3300000,3700000,3000000,2000000,2000000],[1.7833,1.6667,1.8833,3.0333,1.7,1.5833,2,1.8333,1.9,1.4333,1.7833,2.5,1.75,1.4,2.1833,1.6167,2.0167,1.8167,1.65,1.8667],[21800000,21200000,7600000,7200000,6400000,4500000,3900000,3400000,3100000,2800000,7200000,4800000,2700000,2600000,2300000,2000000,1800000,1700000,1200000,1100000],[2,14,1,2,2,4,4,1,1,1,1,2,5,1,1,1,4,2,1,3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>week<\/th>\n      <th>category<\/th>\n      <th>weekly_rank<\/th>\n      <th>show_title<\/th>\n      <th>season_title<\/th>\n      <th>weekly_hours_viewed<\/th>\n      <th>runtime<\/th>\n      <th>weekly_views<\/th>\n      <th>cumulative_weeks_in_top_10<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"info":false,"columnDefs":[{"className":"dt-right","targets":[3,6,7,8,9]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"week","targets":1},{"name":"category","targets":2},{"name":"weekly_rank","targets":3},{"name":"show_title","targets":4},{"name":"season_title","targets":5},{"name":"weekly_hours_viewed","targets":6},{"name":"runtime","targets":7},{"name":"weekly_views","targets":8},{"name":"cumulative_weeks_in_top_10","targets":9}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-38c370de731f246604ad" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-38c370de731f246604ad">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21"],["Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)"],[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],["The Wrong Paris","KPop Demon Hunters","Ice Road: Vengeance","aka Charlie Sheen","The Mule","Unknown Number: The High School Catfish","The Thursday Murder Club","Sonic the Hedgehog 3","War Dogs","Terror Comes Knocking: The Marcela Borges Story","She Said Maybe","Saiyaara","Fall for Me","Anaconda: Cursed Jungle","Mahavatar Narsimha","A Bright Lawyer","Love Untangled","Kontrabida Academy","Dasim","Inspector Zende"],[null,null,null,"aka Charlie Sheen: Season 1",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[38900000,35400000,14400000,21800000,10900000,7100000,7800000,6300000,5800000,4000000,12900000,11900000,4800000,3700000,5000000,3300000,3700000,3000000,2000000,2000000],[1.7833,1.6667,1.8833,3.0333,1.7,1.5833,2,1.8333,1.9,1.4333,1.7833,2.5,1.75,1.4,2.1833,1.6167,2.0167,1.8167,1.65,1.8667],[21800000,21200000,7600000,7200000,6400000,4500000,3900000,3400000,3100000,2800000,7200000,4800000,2700000,2600000,2300000,2000000,1800000,1700000,1200000,1100000],[2,14,1,2,2,4,4,1,1,1,1,2,5,1,1,1,4,2,1,3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>week<\/th>\n      <th>category<\/th>\n      <th>weekly_rank<\/th>\n      <th>show_title<\/th>\n      <th>season_title<\/th>\n      <th>weekly_hours_viewed<\/th>\n      <th>runtime<\/th>\n      <th>weekly_views<\/th>\n      <th>cumulative_weeks_in_top_10<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"info":false,"columnDefs":[{"className":"dt-right","targets":[3,6,7,8,9]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"week","targets":1},{"name":"category","targets":2},{"name":"weekly_rank","targets":3},{"name":"show_title","targets":4},{"name":"season_title","targets":5},{"name":"weekly_hours_viewed","targets":6},{"name":"runtime","targets":7},{"name":"weekly_views","targets":8},{"name":"cumulative_weeks_in_top_10","targets":9}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
-<section id="formatting-columns." class="level1">
-<h1>Formatting columns.</h1>
+<section id="formatting-columns." class="level2">
+<h2 class="anchored" data-anchor-id="formatting-columns.">Formatting columns.</h2>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>format_titles <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(<span class="fu">colnames</span>(df), <span class="st">"_"</span>, <span class="st">" "</span>) <span class="sc">|&gt;</span> <span class="fu">str_to_title</span>()</span>
@@ -428,30 +471,36 @@ $ cumulative_weeks_in_top_10 &lt;dbl&gt; 1, 2, 14, 1, 1, 1, 2, 1, 5, 1, 2, 1, 7,
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="at">n=</span><span class="dv">20</span>) <span class="sc">|&gt;</span></span>
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datatable</span>(<span class="at">options=</span><span class="fu">list</span>(<span class="at">searching=</span><span class="cn">FALSE</span>, <span class="at">info=</span><span class="cn">FALSE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">formatRound</span>(<span class="fu">c</span>(<span class="st">'Weekly Hours Viewed'</span>, <span class="st">'Weekly Views'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-0c10fdccad443490ffde" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-0c10fdccad443490ffde">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21"],["Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)"],[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],["The Wrong Paris","KPop Demon Hunters","Ice Road: Vengeance","aka Charlie Sheen","The Mule","Unknown Number: The High School Catfish","The Thursday Murder Club","Sonic the Hedgehog 3","War Dogs","Terror Comes Knocking: The Marcela Borges Story","She Said Maybe","Saiyaara","Fall for Me","Anaconda: Cursed Jungle","Mahavatar Narsimha","A Bright Lawyer","Love Untangled","Kontrabida Academy","Dasim","Inspector Zende"],[null,null,null,"aka Charlie Sheen: Season 1",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[38900000,35400000,14400000,21800000,10900000,7100000,7800000,6300000,5800000,4000000,12900000,11900000,4800000,3700000,5000000,3300000,3700000,3000000,2000000,2000000],[1.7833,1.6667,1.8833,3.0333,1.7,1.5833,2,1.8333,1.9,1.4333,1.7833,2.5,1.75,1.4,2.1833,1.6167,2.0167,1.8167,1.65,1.8667],[21800000,21200000,7600000,7200000,6400000,4500000,3900000,3400000,3100000,2800000,7200000,4800000,2700000,2600000,2300000,2000000,1800000,1700000,1200000,1100000],[2,14,1,2,2,4,4,1,1,1,1,2,5,1,1,1,4,2,1,3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Week<\/th>\n      <th>Category<\/th>\n      <th>Weekly Rank<\/th>\n      <th>Show Title<\/th>\n      <th>Season Title<\/th>\n      <th>Weekly Hours Viewed<\/th>\n      <th>Runtime<\/th>\n      <th>Weekly Views<\/th>\n      <th>Cumulative Weeks In Top 10<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"info":false,"columnDefs":[{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,6,7,8,9]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Week","targets":1},{"name":"Category","targets":2},{"name":"Weekly Rank","targets":3},{"name":"Show Title","targets":4},{"name":"Season Title","targets":5},{"name":"Weekly Hours Viewed","targets":6},{"name":"Runtime","targets":7},{"name":"Weekly Views","targets":8},{"name":"Cumulative Weeks In Top 10","targets":9}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-3abead1e620d7f439e6b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-3abead1e620d7f439e6b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21"],["Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)"],[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],["The Wrong Paris","KPop Demon Hunters","Ice Road: Vengeance","aka Charlie Sheen","The Mule","Unknown Number: The High School Catfish","The Thursday Murder Club","Sonic the Hedgehog 3","War Dogs","Terror Comes Knocking: The Marcela Borges Story","She Said Maybe","Saiyaara","Fall for Me","Anaconda: Cursed Jungle","Mahavatar Narsimha","A Bright Lawyer","Love Untangled","Kontrabida Academy","Dasim","Inspector Zende"],[null,null,null,"aka Charlie Sheen: Season 1",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[38900000,35400000,14400000,21800000,10900000,7100000,7800000,6300000,5800000,4000000,12900000,11900000,4800000,3700000,5000000,3300000,3700000,3000000,2000000,2000000],[1.7833,1.6667,1.8833,3.0333,1.7,1.5833,2,1.8333,1.9,1.4333,1.7833,2.5,1.75,1.4,2.1833,1.6167,2.0167,1.8167,1.65,1.8667],[21800000,21200000,7600000,7200000,6400000,4500000,3900000,3400000,3100000,2800000,7200000,4800000,2700000,2600000,2300000,2000000,1800000,1700000,1200000,1100000],[2,14,1,2,2,4,4,1,1,1,1,2,5,1,1,1,4,2,1,3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Week<\/th>\n      <th>Category<\/th>\n      <th>Weekly Rank<\/th>\n      <th>Show Title<\/th>\n      <th>Season Title<\/th>\n      <th>Weekly Hours Viewed<\/th>\n      <th>Runtime<\/th>\n      <th>Weekly Views<\/th>\n      <th>Cumulative Weeks In Top 10<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"info":false,"columnDefs":[{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":8,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,6,7,8,9]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Week","targets":1},{"name":"Category","targets":2},{"name":"Weekly Rank","targets":3},{"name":"Show Title","targets":4},{"name":"Season Title","targets":5},{"name":"Weekly Hours Viewed","targets":6},{"name":"Runtime","targets":7},{"name":"Weekly Views","targets":8},{"name":"Cumulative Weeks In Top 10","targets":9}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
-<section id="drop-season_title" class="level1">
-<h1>Drop season_title</h1>
+<section id="drop-season_title" class="level2">
+<h2 class="anchored" data-anchor-id="drop-season_title">Drop season_title</h2>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>GLOBAL_TOP_10 <span class="sc">|&gt;</span> </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>season_title) <span class="sc">|&gt;</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">format_titles</span>() <span class="sc">|&gt;</span></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="at">n=</span><span class="dv">20</span>) <span class="sc">|&gt;</span></span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datatable</span>(<span class="at">options=</span><span class="fu">list</span>(<span class="at">searching=</span><span class="cn">FALSE</span>, <span class="at">info=</span><span class="cn">FALSE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">formatRound</span>(<span class="fu">c</span>(<span class="st">'Weekly Hours Viewed'</span>, <span class="st">'Weekly Views'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-3957d838d6b62d3c8b7c" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-3957d838d6b62d3c8b7c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21"],["Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)"],[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],["The Wrong Paris","KPop Demon Hunters","Ice Road: Vengeance","aka Charlie Sheen","The Mule","Unknown Number: The High School Catfish","The Thursday Murder Club","Sonic the Hedgehog 3","War Dogs","Terror Comes Knocking: The Marcela Borges Story","She Said Maybe","Saiyaara","Fall for Me","Anaconda: Cursed Jungle","Mahavatar Narsimha","A Bright Lawyer","Love Untangled","Kontrabida Academy","Dasim","Inspector Zende"],[38900000,35400000,14400000,21800000,10900000,7100000,7800000,6300000,5800000,4000000,12900000,11900000,4800000,3700000,5000000,3300000,3700000,3000000,2000000,2000000],[1.7833,1.6667,1.8833,3.0333,1.7,1.5833,2,1.8333,1.9,1.4333,1.7833,2.5,1.75,1.4,2.1833,1.6167,2.0167,1.8167,1.65,1.8667],[21800000,21200000,7600000,7200000,6400000,4500000,3900000,3400000,3100000,2800000,7200000,4800000,2700000,2600000,2300000,2000000,1800000,1700000,1200000,1100000],[2,14,1,2,2,4,4,1,1,1,1,2,5,1,1,1,4,2,1,3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Week<\/th>\n      <th>Category<\/th>\n      <th>Weekly Rank<\/th>\n      <th>Show Title<\/th>\n      <th>Weekly Hours Viewed<\/th>\n      <th>Runtime<\/th>\n      <th>Weekly Views<\/th>\n      <th>Cumulative Weeks In Top 10<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"info":false,"columnDefs":[{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,5,6,7,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Week","targets":1},{"name":"Category","targets":2},{"name":"Weekly Rank","targets":3},{"name":"Show Title","targets":4},{"name":"Weekly Hours Viewed","targets":5},{"name":"Runtime","targets":6},{"name":"Weekly Views","targets":7},{"name":"Cumulative Weeks In Top 10","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-0bcfc80ac928f6980f64" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0bcfc80ac928f6980f64">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21"],["Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)"],[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],["The Wrong Paris","KPop Demon Hunters","Ice Road: Vengeance","aka Charlie Sheen","The Mule","Unknown Number: The High School Catfish","The Thursday Murder Club","Sonic the Hedgehog 3","War Dogs","Terror Comes Knocking: The Marcela Borges Story","She Said Maybe","Saiyaara","Fall for Me","Anaconda: Cursed Jungle","Mahavatar Narsimha","A Bright Lawyer","Love Untangled","Kontrabida Academy","Dasim","Inspector Zende"],[38900000,35400000,14400000,21800000,10900000,7100000,7800000,6300000,5800000,4000000,12900000,11900000,4800000,3700000,5000000,3300000,3700000,3000000,2000000,2000000],[1.7833,1.6667,1.8833,3.0333,1.7,1.5833,2,1.8333,1.9,1.4333,1.7833,2.5,1.75,1.4,2.1833,1.6167,2.0167,1.8167,1.65,1.8667],[21800000,21200000,7600000,7200000,6400000,4500000,3900000,3400000,3100000,2800000,7200000,4800000,2700000,2600000,2300000,2000000,1800000,1700000,1200000,1100000],[2,14,1,2,2,4,4,1,1,1,1,2,5,1,1,1,4,2,1,3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Week<\/th>\n      <th>Category<\/th>\n      <th>Weekly Rank<\/th>\n      <th>Show Title<\/th>\n      <th>Weekly Hours Viewed<\/th>\n      <th>Runtime<\/th>\n      <th>Weekly Views<\/th>\n      <th>Cumulative Weeks In Top 10<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"info":false,"columnDefs":[{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":7,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,5,6,7,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Week","targets":1},{"name":"Category","targets":2},{"name":"Weekly Rank","targets":3},{"name":"Show Title","targets":4},{"name":"Weekly Hours Viewed","targets":5},{"name":"Runtime","targets":6},{"name":"Weekly Views","targets":7},{"name":"Cumulative Weeks In Top 10","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
-<section id="converting-runtime-hours-to-minutes." class="level1">
-<h1>converting runtime: hours to minutes.</h1>
+<section id="converting-runtime-hours-to-minutes." class="level2">
+<h2 class="anchored" data-anchor-id="converting-runtime-hours-to-minutes.">Converting runtime: hours to minutes.</h2>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>GLOBAL_TOP_10 <span class="sc">|&gt;</span> </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">runtime_(minutes)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="dv">60</span> <span class="sc">*</span> runtime)) <span class="sc">|&gt;</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>season_title, </span>
@@ -460,14 +509,19 @@ $ cumulative_weeks_in_top_10 &lt;dbl&gt; 1, 2, 14, 1, 1, 1, 2, 1, 5, 1, 2, 1, 7,
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="at">n=</span><span class="dv">20</span>) <span class="sc">|&gt;</span></span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">datatable</span>(<span class="at">options=</span><span class="fu">list</span>(<span class="at">searching=</span><span class="cn">FALSE</span>, <span class="at">info=</span><span class="cn">FALSE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">formatRound</span>(<span class="fu">c</span>(<span class="st">'Weekly Hours Viewed'</span>, <span class="st">'Weekly Views'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-d84b0760ef1453547486" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d84b0760ef1453547486">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21"],["Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)"],[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],["The Wrong Paris","KPop Demon Hunters","Ice Road: Vengeance","aka Charlie Sheen","The Mule","Unknown Number: The High School Catfish","The Thursday Murder Club","Sonic the Hedgehog 3","War Dogs","Terror Comes Knocking: The Marcela Borges Story","She Said Maybe","Saiyaara","Fall for Me","Anaconda: Cursed Jungle","Mahavatar Narsimha","A Bright Lawyer","Love Untangled","Kontrabida Academy","Dasim","Inspector Zende"],[38900000,35400000,14400000,21800000,10900000,7100000,7800000,6300000,5800000,4000000,12900000,11900000,4800000,3700000,5000000,3300000,3700000,3000000,2000000,2000000],[21800000,21200000,7600000,7200000,6400000,4500000,3900000,3400000,3100000,2800000,7200000,4800000,2700000,2600000,2300000,2000000,1800000,1700000,1200000,1100000],[2,14,1,2,2,4,4,1,1,1,1,2,5,1,1,1,4,2,1,3],[107,100,113,182,102,95,120,110,114,86,107,150,105,84,131,97,121,109,99,112]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Week<\/th>\n      <th>Category<\/th>\n      <th>Weekly Rank<\/th>\n      <th>Show Title<\/th>\n      <th>Weekly Hours Viewed<\/th>\n      <th>Weekly Views<\/th>\n      <th>Cumulative Weeks In Top 10<\/th>\n      <th>Runtime (Minutes)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"info":false,"columnDefs":[{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,5,6,7,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Week","targets":1},{"name":"Category","targets":2},{"name":"Weekly Rank","targets":3},{"name":"Show Title","targets":4},{"name":"Weekly Hours Viewed","targets":5},{"name":"Weekly Views","targets":6},{"name":"Cumulative Weeks In Top 10","targets":7},{"name":"Runtime (Minutes)","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d2cfca69b1fad9591c55" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d2cfca69b1fad9591c55">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21","2025-09-21"],["Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)","Films (Non-English)"],[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],["The Wrong Paris","KPop Demon Hunters","Ice Road: Vengeance","aka Charlie Sheen","The Mule","Unknown Number: The High School Catfish","The Thursday Murder Club","Sonic the Hedgehog 3","War Dogs","Terror Comes Knocking: The Marcela Borges Story","She Said Maybe","Saiyaara","Fall for Me","Anaconda: Cursed Jungle","Mahavatar Narsimha","A Bright Lawyer","Love Untangled","Kontrabida Academy","Dasim","Inspector Zende"],[38900000,35400000,14400000,21800000,10900000,7100000,7800000,6300000,5800000,4000000,12900000,11900000,4800000,3700000,5000000,3300000,3700000,3000000,2000000,2000000],[21800000,21200000,7600000,7200000,6400000,4500000,3900000,3400000,3100000,2800000,7200000,4800000,2700000,2600000,2300000,2000000,1800000,1700000,1200000,1100000],[2,14,1,2,2,4,4,1,1,1,1,2,5,1,1,1,4,2,1,3],[107,100,113,182,102,95,120,110,114,86,107,150,105,84,131,97,121,109,99,112]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Week<\/th>\n      <th>Category<\/th>\n      <th>Weekly Rank<\/th>\n      <th>Show Title<\/th>\n      <th>Weekly Hours Viewed<\/th>\n      <th>Weekly Views<\/th>\n      <th>Cumulative Weeks In Top 10<\/th>\n      <th>Runtime (Minutes)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"searching":false,"info":false,"columnDefs":[{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[3,5,6,7,8]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Week","targets":1},{"name":"Category","targets":2},{"name":"Weekly Rank","targets":3},{"name":"Show Title","targets":4},{"name":"Weekly Hours Viewed","targets":5},{"name":"Weekly Views","targets":6},{"name":"Cumulative Weeks In Top 10","targets":7},{"name":"Runtime (Minutes)","targets":8}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
 </div>
 </div>
-<section id="task-4-exploratory-questions" class="level2">
-<h2 class="anchored" data-anchor-id="task-4-exploratory-questions">Task 4: Exploratory Questions</h2>
+</section>
+</section>
+<section id="task-4-exploratory-questions" class="level1">
+<h1>Task 4: Exploratory Questions</h1>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Required Packages</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"DT"</span>)) <span class="fu">install.packages</span>(<span class="st">"DT"</span>)</span>
@@ -477,52 +531,50 @@ $ cumulative_weeks_in_top_10 &lt;dbl&gt; 1, 2, 14, 1, 1, 1, 2, 1, 5, 1, 2, 1, 7,
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
 <span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-</section>
-<section id="q1.-how-many-different-countries-does-netflix-operate-in" class="level1">
-<h1>Q1. How many different countries does Netflix operate in?</h1>
-</section>
-<section id="netflix-operates-in-94-countries." class="level1">
-<h1>Netflix operates in 94 countries.</h1>
+<p>Q1. How many different countries does Netflix operate in?</p>
+<p>Netflix operates in 94 countries.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>country_count <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span> </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(country_iso2) <span class="sc">|&gt;</span> </span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-<section id="q2.-which-non-english-language-film-has-spent-the-most-cumulative-weeks-in-the-global-top-10-how-many-weeks-did-it-spend" class="level1">
-<h1>Q2. Which non-English-language film has spent the most cumulative weeks in the global top 10? How many weeks did it spend?</h1>
-</section>
-<section id="the-non-english-film-with-the-longest-global-top-10-run-is-all-quiet-on-the-western-front-with-23-weeks." class="level1">
-<h1>The non-English film with the longest global Top 10 run is All Quiet on the Western Front with 23 weeks.</h1>
+<p>Q2. Which non-English-language film has spent the most cumulative weeks in the global top 10? How many weeks did it spend?</p>
+<p>The non-English film with the longest global Top 10 run is All Quiet on the Western Front with 23 weeks.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>non_english_film <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">==</span> <span class="st">"Films (Non-English)"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(show_title) <span class="sc">|&gt;</span></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_weeks =</span> <span class="fu">max</span>(cumulative_weeks_in_top_10, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_weeks)) <span class="sc">|&gt;</span></span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-<section id="q3.-what-is-the-longest-film-english-or-non-english-to-have-ever-appeared-in-the-netflix-global-top-10-how-long-is-it-in-minutes" class="level1">
-<h1>Q3. What is the longest film (English or non-English) to have ever appeared in the Netflix global Top 10? How long is it in minutes?</h1>
-</section>
-<section id="the-longest-film-is-pushpa-2-the-rule-reloaded-version-at-224-minutes." class="level1">
-<h1>The longest film is Pushpa 2: The Rule (Reloaded Version) at 224 minutes.</h1>
+<p>Q3. What is the longest film (English or non-English) to have ever appeared in the Netflix global Top 10? How long is it in minutes?</p>
+<p>The longest film is Pushpa 2: The Rule (Reloaded Version) at 224 minutes.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>longest_film <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(category, <span class="st">"Films"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(runtime)) <span class="sc">|&gt;</span></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">runtime_minutes =</span> <span class="fu">round</span>(<span class="dv">60</span> <span class="sc">*</span> runtime)) <span class="sc">|&gt;</span></span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(runtime_minutes)) <span class="sc">|&gt;</span></span>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-<section id="q4.-for-each-of-the-four-categories-what-program-has-the-most-total-hours-of-global-viewership" class="level1">
-<h1>Q4. For each of the four categories, what program has the most total hours of global viewership?</h1>
+<p>Q4. For each of the four categories, what program has the most total hours of global viewership?</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(scales)) <span class="fu">install.packages</span>(<span class="st">"scales"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: scales</code></pre>
 </div>
@@ -540,6 +592,8 @@ Attaching package: 'scales'</code></pre>
 
     col_factor</code></pre>
 </div>
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">show_title =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(season_title), show_title, season_title)) <span class="sc">|&gt;</span></span>
@@ -554,32 +608,30 @@ Attaching package: 'scales'</code></pre>
 <span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">rownames =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Programs with the Most Total Global Hours by Category"</span></span>
 <span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-f2f62b5e10dce9cd1c80" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f2f62b5e10dce9cd1c80">{"x":{"filter":"none","vertical":false,"caption":"<caption>Programs with the Most Total Global Hours by Category<\/caption>","data":[["Films (English)","Films (Non-English)","TV (English)","TV (Non-English)"],["KPop Demon Hunters","Society of the Snow","Wednesday: Season 1","Squid Game: Season 1"],["559,100,000","235,900,000","2,043,650,000","2,729,400,000"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>category<\/th>\n      <th>show_title<\/th>\n      <th>total_hours<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"searching":false,"info":false,"columnDefs":[{"name":"category","targets":0},{"name":"show_title","targets":1},{"name":"total_hours","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-87904ac5b3fe432daea9" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-87904ac5b3fe432daea9">{"x":{"filter":"none","vertical":false,"caption":"<caption>Programs with the Most Total Global Hours by Category<\/caption>","data":[["Films (English)","Films (Non-English)","TV (English)","TV (Non-English)"],["KPop Demon Hunters","Society of the Snow","Wednesday: Season 1","Squid Game: Season 1"],["559,100,000","235,900,000","2,043,650,000","2,729,400,000"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>category<\/th>\n      <th>show_title<\/th>\n      <th>total_hours<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"searching":false,"info":false,"columnDefs":[{"name":"category","targets":0},{"name":"show_title","targets":1},{"name":"total_hours","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-</section>
-<section id="q5.-which-tv-show-had-the-longest-run-in-a-countrys-top-10-how-long-was-this-run-and-in-what-country-did-it-occur" class="level1">
-<h1>Q5. Which TV show had the longest run in a country’s Top 10? How long was this run and in what country did it occur?</h1>
-</section>
-<section id="money-heist-had-the-longest-run-with-127-weeks-in-pakistan." class="level1">
-<h1>Money Heist had the longest run with 127 weeks in Pakistan.</h1>
+<p>Q5. Which TV show had the longest run in a country’s Top 10? How long was this run and in what country did it occur?</p>
+<p>Money Heist had the longest run with 127 weeks in Pakistan.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>longest_country_run <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(category, <span class="st">"TV"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country_name, show_title) <span class="sc">|&gt;</span></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">max_weeks =</span> <span class="fu">max</span>(cumulative_weeks_in_top_10, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(max_weeks)) <span class="sc">|&gt;</span></span>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-<section id="q6.-netflix-provides-over-200-weeks-of-service-history-for-all-but-one-country-in-our-data-set.-which-country-is-this-and-when-did-netflix-cease-operations-in-that-country" class="level1">
-<h1>Q6. Netflix provides over 200 weeks of service history for all but one country in our data set. Which country is this and when did Netflix cease operations in that country?</h1>
-</section>
-<section id="russia-with-35-weeks-the-last-week-in-the-dataset-is-february-27-2022." class="level1">
-<h1>Russia with 35 weeks; the last week in the dataset is February 27, 2022.</h1>
+<p>Q6. Netflix provides over 200 weeks of service history for all but one country in our data set. Which country is this and when did Netflix cease operations in that country?</p>
+<p>Russia with 35 weeks; the last week in the dataset is February 27, 2022.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>country_coverage <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country_name) <span class="sc">|&gt;</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -589,38 +641,34 @@ Attaching package: 'scales'</code></pre>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weeks_count <span class="sc">&lt;</span> <span class="dv">200</span>) <span class="sc">|&gt;</span></span>
 <span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(weeks_count)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-<section id="q7.-what-is-the-total-viewership-of-the-tv-show-squid-game" class="level1">
-<h1>Q7. What is the total viewership of the TV show Squid Game?</h1>
-</section>
-<section id="squid-game-has-total-hours-of-5048300000-globally-all-seasons-combined." class="level1">
-<h1>Squid game has total hours of 5,048,300,000 globally (all seasons combined.)</h1>
+<p>Q7. What is the total viewership of the TV show Squid Game?</p>
+<p>Squid game has total hours of 5,048,300,000 globally (all seasons combined.)</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>squid_game_hours <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(show_title <span class="sc">==</span> <span class="st">"Squid Game"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_hours =</span> <span class="fu">sum</span>(weekly_hours_viewed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_hours)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-<section id="q8.-the-movie-red-notice-has-a-runtime-of-1-hour-and-58-minutes.-approximately-how-many-views-did-it-receive-in-2021" class="level1">
-<h1>Q8. The movie Red Notice has a runtime of 1 hour and 58 minutes. Approximately how many views did it receive in 2021?</h1>
-</section>
-<section id="in-2021-red-notice-received-0-views." class="level1">
-<h1>In 2021, Red Notice received 0 views.</h1>
+<p>Q8. The movie Red Notice has a runtime of 1 hour and 58 minutes. Approximately how many views did it receive in 2021? In 2021, Red Notice received 0 views.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>red_notice_2021 <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(show_title <span class="sc">==</span> <span class="st">"Red Notice"</span>, <span class="fu">year</span>(week) <span class="sc">==</span> <span class="dv">2021</span>) <span class="sc">|&gt;</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_views =</span> <span class="fu">sum</span>(weekly_views, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_views)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-<section id="q9.-how-many-films-reached-number-1-in-the-us-but-did-not-originally-debut-there" class="level1">
-<h1>Q9. How many Films reached Number 1 in the US but did not originally debut there?</h1>
-</section>
-<section id="films-reached-1-in-the-us.-the-most-recent-was-kpop-demon-hunters." class="level1">
-<h1>45 films reached #1 in the US. The most recent was “KPop Demon Hunters.</h1>
+<p>Q9. How many Films reached Number 1 in the US but did not originally debut there?</p>
+<p>45 films reached #1 in the US. The most recent was “KPop Demon Hunters.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>us_films <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="st">"United States"</span>, <span class="fu">str_detect</span>(category, <span class="st">"Films"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(show_title) <span class="sc">|&gt;</span></span>
@@ -647,14 +695,13 @@ Attaching package: 'scales'</code></pre>
 <span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
 <span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(latest_week)) <span class="sc">|&gt;</span></span>
 <span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-</section>
-<section id="q10.-which-tv-showseason-hit-the-top-10-in-the-most-countries-in-its-debut-week-in-how-many-countries-did-it-chart" class="level1">
-<h1>Q10. Which TV show/season hit the top 10 in the most countries in its debut week? In how many countries did it chart?</h1>
-</section>
-<section id="emily-in-paris-hit-the-top-10-in-94-countries-in-its-debut-week." class="level1">
-<h1>Emily in Paris hit the top 10 in 94 countries in its debut week.</h1>
+<p>Q10. Which TV show/season hit the top 10 in the most countries in its debut week? In how many countries did it chart?</p>
+<p>Emily in Paris hit the top 10 in 94 countries in its debut week.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>tv_debuts <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(category, <span class="st">"TV"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(show_title) <span class="sc">|&gt;</span></span>
@@ -662,9 +709,117 @@ Attaching package: 'scales'</code></pre>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">countries_count =</span> <span class="fu">n_distinct</span>(country_name), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(countries_count)) <span class="sc">|&gt;</span></span>
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-<section id="press-releases" class="level2">
-<h2 class="anchored" data-anchor-id="press-releases">Press Releases</h2>
+</section>
+<section id="press-releases" class="level1">
+<h1>Press Releases</h1>
+<section id="stranger-things-is-back-the-final-season-arrives-in-2025" class="level2">
+<h2 class="anchored" data-anchor-id="stranger-things-is-back-the-final-season-arrives-in-2025">Stranger Things Is Back: The Final Season Arrives in 2025</h2>
+<p>The wait is almost over - Stranger Things is coming back for its fifth and final season at the end of 2025, and fans all over the world couldn’t be more excited. Over the years, the first four seasons have racked up about 2,967,980,000 of viewing hours globally, holding onto a spot in Netflix’s Top 10 for more than 50 weeks and reaching audiences in over 93 countries. While Wednesday and Bridgerton have had their big moments as per the comparison table; Stranger Things has managed to keep audiences hooked season after season, proving it’s in a league of its own. With its mix of supernatural thrills, 80s nostalgia, and heart, Stranger Things has become a true global phenomenon — and the final season promises to be the biggest chapter yet.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Total viewing hours</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>st_hours <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(show_title <span class="sc">==</span> <span class="st">"Stranger Things"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_hours =</span> <span class="fu">sum</span>(weekly_hours_viewed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_hours)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Weeks in Top 10</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>st_weeks <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(show_title <span class="sc">==</span> <span class="st">"Stranger Things"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_weeks =</span> <span class="fu">sum</span>(weekly_rank <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_weeks)</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of countries</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>st_countries <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(show_title <span class="sc">==</span> <span class="st">"Stranger Things"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_countries =</span> <span class="fu">n_distinct</span>(country_name)) <span class="sc">|&gt;</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n_countries)</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparison shows</span></span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>comparison <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(show_title <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Wednesday"</span>, <span class="st">"Bridgerton"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(show_title) <span class="sc">|&gt;</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_hours =</span> <span class="fu">sum</span>(weekly_hours_viewed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_weeks =</span> <span class="fu">sum</span>(weekly_rank <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="netflix-finds-blockbuster-success-in-india-with-hindi-hits" class="level2">
+<h2 class="anchored" data-anchor-id="netflix-finds-blockbuster-success-in-india-with-hindi-hits">Netflix Finds Blockbuster Success in India With Hindi Hits</h2>
+<p>India has quickly become one of Netflix’s most exciting growth markets with Hindi-language movies and shows pulling in massive audiences. Over the past year, Hindi films and TV series have racked up 183,000,000 hours of viewing time, proving that local content resonates strongly with audiences. Some of these blockbusters like Saiyaara and Mahavatar Narsimha shot straight to the Top 10 in India, even if they never appeared in the U.S. charts.</p>
+<p>This surge in viewership suggests Netflix’s customer base in India now numbers in the tens of millions, with steady growth over 221 weeks of consistent Top 10 appearances. Compared to other major markets, India is showing one of the fastest upward trends in regional viewership, making it a cornerstone of Netflix’s long-term global strategy. With a growing appetite for Hindi-language blockbusters and original TV shows, India is quickly proving to be not just a market, but a powerhouse of creativity and engagement.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>total_hindi_hours <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(category <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Films (Non-English)"</span>, <span class="st">"TV (Non-English)"</span>),</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">grepl</span>(<span class="st">"Hindi"</span>, show_title, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>) <span class="sc">|</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">grepl</span>(<span class="st">"Hindi"</span>, season_title, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_hours =</span> <span class="fu">sum</span>(weekly_hours_viewed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_hours)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>hindi_growth_weeks <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="st">"India"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_weeks =</span> <span class="fu">n_distinct</span>(week)) <span class="sc">|&gt;</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n_weeks)</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>india_only <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="st">"India"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(show_title) <span class="sc">|&gt;</span></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>( <span class="co"># keep only titles NOT in the US Top 10</span></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>    COUNTRY_TOP_10 <span class="sc">|&gt;</span> <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">|&gt;</span>  <span class="fu">distinct</span>(show_title),</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="st">"show_title"</span></span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(india_only, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 1
+  show_title        
+  &lt;chr&gt;             
+1 Saiyaara          
+2 Mahavatar Narsimha
+3 Inspector Zende   
+4 Materialists      
+5 Kingdom           </code></pre>
+</div>
+</div>
+</section>
+<section id="korean-dramas-continue-to-take-the-world-by-storm-on-netflix" class="level2">
+<h2 class="anchored" data-anchor-id="korean-dramas-continue-to-take-the-world-by-storm-on-netflix">Korean Dramas Continue to Take the World by Storm on Netflix</h2>
+<p>Korean dramas and films have quickly become one of Netflix’s biggest global success stories. Breakout titles like Squid Game, All of Us Are Dead, and The Glory have not only captured audiences at home in Korea, but have also dominated viewing charts worldwide. Collectively, Korean shows and movies have generated approximately 136,810,000 of viewing hours, holding spots in the Top 10 across 77 countries.</p>
+<p>K-dramas, once seen as niche, now rival the biggest English-language hits in both viewership and cultural impact. Squid Game set record-breaking hours and charted in more countries than nearly any other Netflix series, while new Korean titles continue to land in the Top 10 week after week. This surge shows Netflix’s strength in bringing international stories to global audiences - and with more Korean originals on the way, the momentum isn’t slowing down.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>korean_hours <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"Korea"</span>, show_title, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>) <span class="sc">|</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">grepl</span>(<span class="st">"Korea"</span>, season_title, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_hours =</span> <span class="fu">sum</span>(weekly_hours_viewed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(total_hours)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>scales<span class="sc">::</span><span class="fu">comma</span>(korean_hours)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "136,810,000"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>korean_countries <span class="ot">&lt;-</span> COUNTRY_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">"Korea"</span>, show_title, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>) <span class="sc">|</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">grepl</span>(<span class="st">"Korea"</span>, season_title, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_countries =</span> <span class="fu">n_distinct</span>(country_name)) <span class="sc">|&gt;</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n_countries)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>squid_game_stats <span class="ot">&lt;-</span> GLOBAL_TOP_10 <span class="sc">|&gt;</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(show_title <span class="sc">==</span> <span class="st">"Squid Game"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_hours =</span> <span class="fu">sum</span>(weekly_hours_viewed, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_weeks =</span> <span class="fu">sum</span>(weekly_rank <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 
 
 </section>
