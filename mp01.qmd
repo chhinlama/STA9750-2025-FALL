@@ -1,6 +1,5 @@
 ---
-title: "MP01"
-format: html
+title: "Mini Project 01"
 ---
 
 # Task 1: Data Acquisition
