@@ -1,12 +1,33 @@
+
 ---
-title: "Mini Project 01"
+title: "MINI PROJECT 01 - NETFLIX ANALYSIS"
+author: "Chhin Lama"
+format: html
+toc: true
 ---
 
-# Task 1: Data Acquisition
-## Downloading the files.
+## Executive Summary
+
+Netflix continues to deliver global hits, charting across 94 countries from July 2021 through September 2025, by combining creativity with broad audience appeal. Using Netflix’s public Top 10 dataset, this analysis explores how recent originals have performed across international markets. English-language titles dominate with 8,840 appearances, while non-English content-especially from Korea and India has surged in global recognition. The findings confirm that Netflix originals are not just local successes but global cultural phenomena, consistently ranking in multiple countries’ Top 10 lists.
+
+Key Findings:
+
+1. English vs. Non-English Originals
+
+2. Global Blockbusters 
+
+3. Korean Content as Global Powerhouse
+
+# Task 1 & 2: Data Acquisition and Data Cleaning
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
+#| #| echo: false
+#| results: 'hide'
+#| warning: false
+#| message: false
+# Downloading the files.
 if(!dir.exists(file.path("data", "mp01"))){
     dir.create(file.path("data", "mp01"), showWarnings=FALSE, recursive=TRUE)
 }
@@ -24,94 +45,58 @@ if(!file.exists(COUNTRY_TOP_10_FILENAME)){
     download.file("https://www.netflix.com/tudum/top10/data/all-weeks-countries.tsv", 
                   destfile=COUNTRY_TOP_10_FILENAME)
 }
-```
 
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
+# Install required packages
 if(!require("tidyverse")) install.packages("tidyverse")
 library(readr)
 library(dplyr)
 
+# Define filename
 GLOBAL_TOP_10 <- read_tsv(GLOBAL_TOP_10_FILENAME)
-```
 
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
 str(GLOBAL_TOP_10)
-```
 
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
 glimpse(GLOBAL_TOP_10)
-```
 
-# Task 2: Data Cleaning
-## Fix "N/A" values in season_title to NA.
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
+# Fix "N/A" values in season_title to NA.
 GLOBAL_TOP_10 <- GLOBAL_TOP_10 |>
   mutate(season_title = if_else(season_title == "N/A", NA, season_title))
 
 # Confirm the fix
 glimpse(GLOBAL_TOP_10)
-```
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
+
 COUNTRY_TOP_10 <- read_tsv(COUNTRY_TOP_10_FILENAME, na = "N/A")
 
 # Confirm the fix
 glimpse(COUNTRY_TOP_10)
-```
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
+
 COUNTRY_TOP_10 <- COUNTRY_TOP_10 |>
   mutate(season_title = if_else(season_title == "N/A", NA, season_title))
 
 # Confirm the fix
 glimpse(COUNTRY_TOP_10)
+
 ```
 
-# Task 3: Data Import
-
+# Task 3: Data Import and Preparation
 ```{r}
+#| results: 'asis'
+#| warning: false
+#| message: false
 #| code-fold: true
 #| code-summary: "Show the code"
+
 COUNTRY_TOP_10 <- read_tsv(COUNTRY_TOP_10_FILENAME, na = "N/A")
 
-
-# Check the structure
-glimpse(COUNTRY_TOP_10)
-
-```
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
+# install DT package
 if(!require("DT")) install.packages("DT")
 library(DT)
-```
 
-## Show only first 20 rows.
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-library(DT)
 GLOBAL_TOP_10 |> 
     head(n=20) |>
-    datatable(options=list(searching=FALSE, info=FALSE))
-```
+    datatable(options=list(searching=FALSE, info=FALSE), caption = "First 20 rows")
 
-## Formatting columns.
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-library(stringr)
+library(stringr) # Formatting columns.
 format_titles <- function(df){
     colnames(df) <- str_replace_all(colnames(df), "_", " ") |> str_to_title()
     df
@@ -120,34 +105,34 @@ format_titles <- function(df){
 GLOBAL_TOP_10 |> 
     format_titles() |>
     head(n=20) |>
-    datatable(options=list(searching=FALSE, info=FALSE)) |>
+    datatable(options=list(searching=FALSE, info=FALSE), caption = "Formatted Table") |>
     formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
+
 ```
 
-## Drop season_title
+## Global Top 10 Netflix Data
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-GLOBAL_TOP_10 |> 
+
+invisible(
+GLOBAL_TOP_10 |> # Drop season_title
     select(-season_title) |>
     format_titles() |>
     head(n=20) |>
     datatable(options=list(searching=FALSE, info=FALSE)) |>
     formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
-```
+)
 
-## Converting runtime: hours to minutes.
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-GLOBAL_TOP_10 |> 
+GLOBAL_TOP_10 |> # Converting runtime: hours to minutes.
     mutate(`runtime_(minutes)` = round(60 * runtime)) |>
     select(-season_title, 
            -runtime) |>
     format_titles() |>
     head(n=20) |>
-    datatable(options=list(searching=FALSE, info=FALSE)) |>
+    datatable(options=list(searching=FALSE, info=FALSE), caption = "GLOBAL TOP 10 NETFLIX SHOWS") |>
     formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
+
 ```
 
 # Task 4: Exploratory Questions
@@ -212,6 +197,9 @@ longest_film <- GLOBAL_TOP_10 |>
 Q4. For each of the four categories, what program has the most total hours of global viewership?
 
 ```{r}
+#| results: 'asis'
+#| warning: false
+#| message: false
 #| code-fold: true
 #| code-summary: "Show the code"
 if(!require(scales)) install.packages("scales")
