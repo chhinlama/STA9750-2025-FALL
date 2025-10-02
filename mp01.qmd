@@ -18,8 +18,26 @@ Key Findings:
 
 3. Korean Content as Global Powerhouse
 
-# Task 1 & 2: Data Acquisition and Data Cleaning
+```{r}
+#| echo: false
+#| results: 'asis'
 
+cat("
+::: {.callout-note}
+**Outline of This Report**
+
+- In **Tasks 1 & 2**, we import the raw data, clean and standardize it, then combine the different datasets into one consistent structure for analysis.  
+- In **Task 3**, we create summary tables and descriptive statistics to explore important features of the data.  
+- In **Task 4**, we answer exploratory questions by using dplyr and visualization tools to uncover patterns and insights in the dataset.  
+- Finally, we conclude with a **Press Release** that communicates the most important findings in a clear and accessible way for a general audience.  
+:::
+")
+
+```
+
+
+# Task 1 & 2: Data Acquisition and Data Cleaning
+In Task 1 & 2, we import the raw data, clean and standardize it, then combine the different datasets into one consistent structure for analysis.  
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -79,6 +97,7 @@ glimpse(COUNTRY_TOP_10)
 ```
 
 # Task 3: Data Import and Preparation
+In Task 3, we create summary tables and descriptive statistics to explore important features of the data.
 ```{r}
 #| results: 'asis'
 #| warning: false
@@ -94,7 +113,7 @@ library(DT)
 
 GLOBAL_TOP_10 |> 
     head(n=20) |>
-    datatable(options=list(searching=FALSE, info=FALSE), caption = "First 20 rows")
+    datatable(options=list(searching=FALSE, info=FALSE, scrollX=TRUE), caption = "First 20 rows") 
 
 library(stringr) # Formatting columns.
 format_titles <- function(df){
@@ -105,7 +124,7 @@ format_titles <- function(df){
 GLOBAL_TOP_10 |> 
     format_titles() |>
     head(n=20) |>
-    datatable(options=list(searching=FALSE, info=FALSE), caption = "Formatted Table") |>
+    datatable(options=list(searching=FALSE, info=FALSE, scrollX=TRUE), caption = "Formatted Table") |>
     formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
 
 ```
@@ -136,7 +155,7 @@ GLOBAL_TOP_10 |> # Converting runtime: hours to minutes.
 ```
 
 # Task 4: Exploratory Questions
-
+In Task 4, we answer exploratory questions by using dplyr and visualization tools to uncover patterns and insights in the dataset. 
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
