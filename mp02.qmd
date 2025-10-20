@@ -250,7 +250,6 @@ Some initial analysis to familiarize ourselves with the data using the dplyr pac
 
 Q1. Which CBSA (by name) permitted the largest number of new housing units in the decade from 2010 to 2019 (inclusive)?
 
-
 ```{r}
 
 ```
