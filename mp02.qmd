@@ -627,7 +627,7 @@ Most CBSAs exhibit stable or slightly declining household sizes over time, with 
 #| warning: false
 #| code-fold: true
 #| code-summary: "Code"
-#| fig-cap: "Figure 3. Average Household Size Over Time (Top 10 CBSAs, Cleaned)"
+#| fig-cap: "Figure 3. Average Household Size Over Time (Top 10 CBSAs)"
 
 library(dplyr)
 library(ggplot2)
@@ -1093,7 +1093,8 @@ Federal YIMBY incentives could target metros that demonstrate both strong housin
 :::
 
 # Extra Credit
-## Extra Credit #01
+Extra Credit #01
+
 ## Data Relationship Diagram
 
 ![](images/erd.png){fig-align="center" width="100%"fig-cap="Figure 1. Data Relationship Diagram"}
