@@ -1096,4 +1096,8 @@ Federal YIMBY incentives could target metros that demonstrate both strong housin
 ## Extra Credit #01
 ## Data Relationship Diagram
 
-![](images/erd.png){fig-align="center" width=80% fig-cap="Figure 1. Data Relationship Diagram"}
+![](images/erd.png){fig-align="center" width="100%"fig-cap="Figure 1. Data Relationship Diagram"}
+
+
+
+

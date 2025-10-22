@@ -32,7 +32,6 @@ cat("
 - Finally, we conclude with a **Press Release** that communicates the most important findings in a clear and accessible way for a general audience.  
 :::
 ")
-
 ```
 
 
