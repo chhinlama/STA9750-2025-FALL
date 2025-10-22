@@ -1091,3 +1091,9 @@ Together, these indicators identify “YIMBY success” regions—those expandin
 
 Federal YIMBY incentives could target metros that demonstrate both strong housing growth and declining rent burdens. A partnership between Houston (YIMBY leader) and New York City (NIMBY-constrained) would illustrate bipartisan cooperation toward sustainable urban growth. Empowering local development through grants, zoning flexibility, and infrastructure investment will help replicate YIMBY outcomes nationwide—ensuring affordability, mobility, and long-term urban vitality.
 :::
+
+# Extra Credit
+## Extra Credit #01
+## Data Relationship Diagram
+
+![](images/erd.png){fig-align="center" width=80% fig-cap="Figure 1. Data Relationship Diagram"}
