@@ -164,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#nyc-city-council-districts" id="toc-nyc-city-council-districts" class="nav-link" data-scroll-target="#nyc-city-council-districts">NYC CITY COUNCIL DISTRICTS</a>
   <ul class="collapse">
-  <li><a href="#task-1-download-nyc-citcy-council-district-boundaries" id="toc-task-1-download-nyc-citcy-council-district-boundaries" class="nav-link" data-scroll-target="#task-1-download-nyc-citcy-council-district-boundaries">Task 1: Download NYC Citcy Council District Boundaries</a></li>
+  <li><a href="#task-1-download-nyc-city-council-district-boundaries" id="toc-task-1-download-nyc-city-council-district-boundaries" class="nav-link" data-scroll-target="#task-1-download-nyc-city-council-district-boundaries">Task 1: Download NYC City Council District Boundaries</a></li>
   </ul></li>
   <li><a href="#nyc-tree-points" id="toc-nyc-tree-points" class="nav-link" data-scroll-target="#nyc-tree-points">NYC TREE POINTS</a>
   <ul class="collapse">
@@ -195,6 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#closing-request" id="toc-closing-request" class="nav-link" data-scroll-target="#closing-request">Closing &amp; Request</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -228,15 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>New York City’s vast network of trees is a vital part of its urban ecosystem — improving air quality, reducing heat, and enhancing livability for millions of residents. This project, Visualizing and Maintaining the Green Canopy of NYC, explores the NYC TreeMap dataset to analyze the distribution, diversity, and health of nearly 900,000 street trees across all 51 City Council districts. Through spatial analysis and data visualization, we highlight areas of need, uncover patterns in species composition, and propose data-driven strategies for equitable green investment across the city.</p>
-<p><b><u>Key Findings</u></b>:</p>
-<ol type="1">
-<li><p>District 23 has the most trees in NYC</p></li>
-<li><p>District 4 has the highest tree density</p></li>
-<li><p>District 17 shows the highest share of dead trees</p></li>
-<li><p>Honeylocust is the most common species in Manhattan.</p></li>
-<li><p>The nearest tree to Baruch College is a Honeylocust on 3rd Avenue</p></li>
-</ol>
+<p>New York City’s vast network of trees is a vital part of its urban ecosystem — improving air quality, reducing heat, and enhancing livability for millions of residents. This project, Visualizing and Maintaining the Green Canopy of NYC, explores the NYC TreeMap dataset to analyze the distribution, diversity, and health of over 650,000 street trees across all 51 City Council districts. Through spatial analysis and data visualization, we highlight areas of need, uncover patterns in species composition, and propose data-driven strategies for equitable green investment across the city.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -253,7 +246,7 @@ Note
 <li>In <strong>Task 2</strong>, we retrieve and combine NYC Tree Points data from the OpenData API using responsible pagination and caching.</li>
 <li>In <strong>Task 3</strong>, we map all tree locations across council districts using ggplot2 and sf, visualizing the city’s green canopy.</li>
 <li>In <strong>Task 4</strong>, we conduct district-level analyses to identify areas with the most trees, highest density, and greatest need for maintenance.</li>
-<li>Finally, In Task 5, we design a Parks Department Proposal recommending targeted investments to enhance canopy equity and urban sustainability.</li>
+<li>Finally, <strong>In Task 5</strong>, we design a Parks Department Proposal recommending targeted investments to enhance canopy equity and urban sustainability.</li>
 </ul>
 </div>
 </div>
@@ -262,8 +255,8 @@ Note
 <h1>Data Acquisition</h1>
 <section id="nyc-city-council-districts" class="level2">
 <h2 class="anchored" data-anchor-id="nyc-city-council-districts">NYC CITY COUNCIL DISTRICTS</h2>
-<section id="task-1-download-nyc-citcy-council-district-boundaries" class="level3">
-<h3 class="anchored" data-anchor-id="task-1-download-nyc-citcy-council-district-boundaries">Task 1: Download NYC Citcy Council District Boundaries</h3>
+<section id="task-1-download-nyc-city-council-district-boundaries" class="level3">
+<h3 class="anchored" data-anchor-id="task-1-download-nyc-city-council-district-boundaries">Task 1: Download NYC City Council District Boundaries</h3>
 <p>The first step involves acquiring the official shapefile of New York City’s 51 Council Districts from the NYC Department of City Planning to establish a geographic framework for analysis. This dataset provides the spatial boundaries necessary to align tree locations with their respective council districts, enabling district-level comparisons and analyses throughout the project.</p>
 <div class="cell">
 <details class="code-fold">
@@ -494,8 +487,8 @@ Note
 <span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>  trees_sf</span>
 <span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"use_dev"</span>)) use_dev <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>use_dev <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"use_dev"</span>)) use_dev <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
 <span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">isTRUE</span>(use_dev)) {</span>
 <span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>  <span class="co"># small, fast subset for testing</span></span>
@@ -604,16 +597,16 @@ Note
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   coun_dist total_trees
-1         23        7774
-2         51        5955
-3         39        4226
-4         50        4010
-5         44        3355
-6         13        3181
-7         29        3133
-8         19        3009
-9         22        2839
-10         4        2742</code></pre>
+1         51       51211
+2         19       34473
+3         50       33149
+4         23       30681
+5         31       23075
+6         49       20958
+7         27       20106
+8         32       19835
+9         24       19060
+10        30       18393</code></pre>
 </div>
 </div>
 <p>Q2. Which council district has the highest density of trees? The Shape_Area column from the district shape file will be helpful here.</p>
@@ -638,16 +631,16 @@ Note
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   coun_dist Shape_Leng Shape_Area total_trees tree_density_km2
-1          4   65739.58   66802515        2742         41.04636
-2         39   72284.03  118294553        4226         35.72438
-3         44   62842.48   99194858        3355         33.82232
-4          5   58083.63   37752246        1269         33.61389
-5         25   47289.03   63861388        2127         33.30651
-6          9   41266.13   56263769        1871         33.25408
-7          6   56770.18   82672687        2696         32.61053
-8         35   53404.51   79440619        2578         32.45191
-9          7   52375.10   55186140        1729         31.33033
-10         2   41619.72   48322121        1348         27.89613</code></pre>
+1         43   58169.11   75477511       13129         173.9459
+2          9   41266.13   56263769        8391         149.1368
+3          4   65739.58   66802515        8883         132.9740
+4         35   53404.51   79440619       10526         132.5015
+5          5   58083.63   37752246        4995         132.3100
+6         25   47289.03   63861388        7841         122.7815
+7         14   50678.37   52585062        6388         121.4794
+8          7   52375.10   55186140        6656         120.6100
+9         36   39108.36   76224396        9031         118.4791
+10        44   62842.48   99194858       11660         117.5464</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -685,16 +678,16 @@ Note
 <pre><code># A tibble: 10 × 4
    coun_dist total_trees dead_trees frac_dead
        &lt;int&gt;       &lt;int&gt;      &lt;int&gt;     &lt;dbl&gt;
- 1        17        1012         58    0.0573
- 2        16         730         39    0.0534
- 3        10        1389         74    0.0533
- 4        14         681         33    0.0485
- 5        15        1435         68    0.0474
- 6        21        1239         53    0.0428
- 7        27        1576         64    0.0406
- 8        38        1396         54    0.0387
- 9         2        1348         51    0.0378
-10        49        1409         53    0.0376</code></pre>
+ 1        16        6535        353    0.0540
+ 2         8        7375        307    0.0416
+ 3        17       11858        483    0.0407
+ 4        15        7988        324    0.0406
+ 5        10        6470        227    0.0351
+ 6        14        6388        224    0.0351
+ 7         3        8599        284    0.0330
+ 8        34       10743        341    0.0317
+ 9         1        5687        178    0.0313
+10         7        6656        206    0.0309</code></pre>
 </div>
 </div>
 <p>Q4. What is the most common tree species in Manhattan?</p>
@@ -735,16 +728,16 @@ Note
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>          spc_common total_trees
-1        honeylocust        3887
-2       Callery pear        2046
-3             ginkgo        1486
-4            pin oak        1359
-5   London planetree        1178
-6            Sophora        1169
-7   Japanese zelkova        1045
-8  littleleaf linden         906
-9       American elm         443
-10   American linden         403</code></pre>
+1        honeylocust       13905
+2       Callery pear        7542
+3             ginkgo        6012
+4            pin oak        4886
+5            Sophora        4629
+6   London planetree        4527
+7   Japanese zelkova        3935
+8  littleleaf linden        3570
+9       American elm        1817
+10   American linden        1779</code></pre>
 </div>
 </div>
 <p>Q5. What is the species of the tree closest to Baruch’s campus?</p>
@@ -792,12 +785,12 @@ Note
 <pre><code>Simple feature collection with 1 feature and 7 fields
 Geometry type: POINT
 Dimension:     XY
-Bounding box:  xmin: 989169 ymin: 208821.4 xmax: 989169 ymax: 208821.4
+Bounding box:  xmin: 988865.4 ymin: 209061.4 xmax: 988865.4 ymax: 209061.4
 Projected CRS: NAD83 / New York Long Island (ftUS)
-   spc_common                          spc_latin      address  boroname
-1 honeylocust Gleditsia triacanthos var. inermis 333 3 AVENUE Manhattan
-  tree_dbh status distance_m                geometry
-1        4  Alive   335.6908 POINT (989169 208821.4)</code></pre>
+    spc_common        spc_latin            address  boroname tree_dbh status
+1 Callery pear Pyrus calleryana 137 EAST 25 STREET Manhattan        9  Alive
+  distance_m                  geometry
+1   74.14379 POINT (988865.4 209061.4)</code></pre>
 </div>
 </div>
 </section>
@@ -933,10 +926,10 @@ Projected CRS: NAD83 / New York Long Island (ftUS)
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  coun_dist total_trees trees per km² dead trees (%)
-1        36         639           8.4            1.4
-2         9       1,871          33.3            3.6
-3        43       1,480          19.6            0.9
-4        25       2,127          33.3            1.3</code></pre>
+1        36       9,031         118.5            1.5
+2         9       8,391         149.1            2.9
+3        43      13,129         173.9            1.6
+4        25       7,841         122.8            1.3</code></pre>
 </div>
 </div>
 <p>District 43 falls below average in canopy density yet maintains one of the healthiest tree populations. Targeted investment here would expand coverage without high replacement costs, maximizing environmental benefits per dollar spent.</p>
@@ -1021,10 +1014,14 @@ Projected CRS: NAD83 / New York Long Island (ftUS)
 <section id="closing-request" class="level3">
 <h3 class="anchored" data-anchor-id="closing-request">Closing &amp; Request</h3>
 <p>We propose a $500,000 pilot program to expand and strengthen District 43’s tree canopy. The plan will plant approximately 600 new trees, replace around 100 aging or high-risk ones, and provide maintenance and soil care for roughly 800 existing trees across key corridors near schools, senior centers, and community spaces. With a current canopy density of 19.6 trees/km² and one of the lowest dead-tree rates in the city (0.9%), this initiative will build on a healthy foundation to close the gap with greener neighboring districts such as District 9 and 25. Investing now will ensure long-term canopy growth, safer streets, and a more resilient urban environment for Brooklyn residents.</p>
-
-
 </section>
 </section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Overall, this project shows how combining the NYC Street Tree Census with City Council district boundaries can reveal clear patterns in canopy coverage, maintenance needs, and species composition across the city. By identifying districts with high density, high mortality, or limited coverage—such as District 43 compared to greener peers—we can target investments where they will deliver the greatest environmental and equity benefits. These insights provide a data-driven foundation for future Parks Department decisions on planting, maintenance, and long-term canopy planning.</p>
+
+
 </section>
 
 </main> <!-- /main -->

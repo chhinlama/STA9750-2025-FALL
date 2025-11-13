@@ -6,19 +6,7 @@ toc: true
 ---
 
 # Introduction
-New York City’s vast network of trees is a vital part of its urban ecosystem — improving air quality, reducing heat, and enhancing livability for millions of residents. This project, Visualizing and Maintaining the Green Canopy of NYC, explores the NYC TreeMap dataset to analyze the distribution, diversity, and health of nearly 900,000 street trees across all 51 City Council districts. Through spatial analysis and data visualization, we highlight areas of need, uncover patterns in species composition, and propose data-driven strategies for equitable green investment across the city.
-
-<b><u>Key Findings</u></b>:
-
-1. District 23 has the most trees in NYC
-
-2. District 4 has the highest tree density
-
-3. District 17 shows the highest share of dead trees
-
-4. Honeylocust is the most common species in Manhattan.
-
-5. The nearest tree to Baruch College is a Honeylocust on 3rd Avenue
+New York City’s vast network of trees is a vital part of its urban ecosystem — improving air quality, reducing heat, and enhancing livability for millions of residents. This project, Visualizing and Maintaining the Green Canopy of NYC, explores the NYC TreeMap dataset to analyze the distribution, diversity, and health of over 650,000 street trees across all 51 City Council districts. Through spatial analysis and data visualization, we highlight areas of need, uncover patterns in species composition, and propose data-driven strategies for equitable green investment across the city.
 
 ```{r}
 #| echo: false
@@ -32,14 +20,14 @@ cat("
 - In **Task 2**, we retrieve and combine NYC Tree Points data from the OpenData API using responsible pagination and caching.
 - In **Task 3**, we map all tree locations across council districts using ggplot2 and sf, visualizing the city’s green canopy.
 - In **Task 4**, we conduct district-level analyses to identify areas with the most trees, highest density, and greatest need for maintenance.
-- Finally, In Task 5, we design a Parks Department Proposal recommending targeted investments to enhance canopy equity and urban sustainability.
+- Finally, **In Task 5**, we design a Parks Department Proposal recommending targeted investments to enhance canopy equity and urban sustainability.
 :::
 ")
 ```
 
 # Data Acquisition
 ## NYC CITY COUNCIL DISTRICTS
-### Task 1: Download NYC Citcy Council District Boundaries
+### Task 1: Download NYC City Council District Boundaries
 The first step involves acquiring the official shapefile of New York City’s 51 Council Districts from the NYC Department of City Planning to establish a geographic framework for analysis.
 This dataset provides the spatial boundaries necessary to align tree locations with their respective council districts, enabling district-level comparisons and analyses throughout the project.
 ```{r}
@@ -263,8 +251,8 @@ get_nyc_tree_points <- function(
 
   trees_sf
 }
-
-if (!exists("use_dev")) use_dev <- TRUE
+use_dev <- FALSE
+if (!exists("use_dev")) use_dev <- FALSE
 
 if (isTRUE(use_dev)) {
   # small, fast subset for testing
@@ -701,3 +689,5 @@ This comparison highlights how District 43’s tree canopy and health differ fro
 ### Closing & Request
 We propose a $500,000 pilot program to expand and strengthen District 43’s tree canopy. The plan will plant approximately 600 new trees, replace around 100 aging or high-risk ones, and provide maintenance and soil care for roughly 800 existing trees across key corridors near schools, senior centers, and community spaces. With a current canopy density of 19.6 trees/km² and one of the lowest dead-tree rates in the city (0.9%), this initiative will build on a healthy foundation to close the gap with greener neighboring districts such as District 9 and 25. Investing now will ensure long-term canopy growth, safer streets, and a more resilient urban environment for Brooklyn residents.
 
+# Conclusion
+Overall, this project shows how combining the NYC Street Tree Census with City Council district boundaries can reveal clear patterns in canopy coverage, maintenance needs, and species composition across the city. By identifying districts with high density, high mortality, or limited coverage—such as District 43 compared to greener peers—we can target investments where they will deliver the greatest environmental and equity benefits. These insights provide a data-driven foundation for future Parks Department decisions on planting, maintenance, and long-term canopy planning.
