@@ -1,12 +1,13 @@
 ---
-title: "MINI PROJECT 03 - Visualizing and Maintaining the Green Canopy of NYC"
+title: "MINI PROJECT 03"
+subtitle: "Visualizing and Maintaining the Green Canopy of NYC"
 author: "Chhin Lama"
 format: html
 toc: true
 ---
 
 # Introduction
-New York City’s vast network of trees is a vital part of its urban ecosystem — improving air quality, reducing heat, and enhancing livability for millions of residents. This project, Visualizing and Maintaining the Green Canopy of NYC, explores the NYC TreeMap dataset to analyze the distribution, diversity, and health of over 650,000 street trees across all 51 City Council districts. Through spatial analysis and data visualization, we highlight areas of need, uncover patterns in species composition, and propose data-driven strategies for equitable green investment across the city.
+New York City’s extensive network of more than 650,000 street trees plays a critical role in cooling neighborhoods, improving air quality, and enhancing everyday quality of life. This project analyzes the NYC Street Tree Census and council district boundaries to understand the spatial distribution, species composition, and health of the city’s urban canopy. Through mapping and district-level analytics, we identify areas with strong coverage and others that require targeted planting or maintenance to advance canopy equity across the city.
 
 ```{r}
 #| echo: false
@@ -334,7 +335,7 @@ This allows us to explore several key questions—such as which districts have t
 
 Q1. Which council district has the most trees?
 
-Council District 23 has the most trees, with a total of 7,774 trees — significantly higher than any other district in the top 10 list.
+Council District 51 has the most trees, with a total of 51,211 - the highest count citywide.
 ```{r}
 #| message: false
 #| code-fold: true
@@ -351,7 +352,7 @@ head(district_counts_attr, 10)
 ```
 Q2. Which council district has the highest density of trees? The Shape_Area column from the district shape file will be helpful here.
 
-Council District 4 has the highest tree density, with 41.05 trees per square kilometer, making it the most canopy-dense district relative to land area.
+Council District 43 has the highest tree density, with approximately 174 trees per square kilometer - the densest canopy in the city.
 ```{r}
 #| message: false
 #| warning: false
@@ -377,7 +378,7 @@ head(district_density, 10)
 ```
 Q3. Which district has highest fraction of dead trees out of all trees?
 
-The council district with the highest fraction of dead trees is District 17, where approximately 5.7% of all trees are recorded as dead.
+District 16 has the highest share of dead trees, with approximately 5.4% of its tree population recorded as dead.
 ```{r}
 #| code-fold: true
 #| code-summary: "Code"
@@ -405,7 +406,7 @@ head(dead_summary, 10)
 ```
 Q4. What is the most common tree species in Manhattan?
 
-The most common tree species in Manhattan is Honeylocust, with a total of 3,887 trees recorded.
+Honeylocust is the most common species in Manhattan with 13,905 recorded trees.
 ```{r}
 #| code-fold: true
 #| code-summary: "Code"
@@ -442,7 +443,7 @@ head(common_species_manhattan, 10)
 ```
 Q5. What is the species of the tree closest to Baruch’s campus?
 
-The tree closest to Baruch College’s campus is a Honeylocust (Gleditsia triacanthos var. inermis), located at 333 3rd Avenue, Manhattan. It is alive, has a diameter of 4 inches, and stands approximately 335.7 feet (≈102 meters) away from Baruch’s main location.
+The nearest tree to Baruch College is a Callery Pear (Pyrus calleryana), located at 137 East 25th Street in Manhattan. It is alive, has a diameter of 9 inches, and is approximately 74 meters (243 feet) from Baruch’s campus.
 ```{r}
 #| code-fold: true
 #| code-summary: "Code"
@@ -484,12 +485,13 @@ nearest_tree |>
   dplyr::select(spc_common, spc_latin, address, boroname, tree_dbh, status, distance_m)
 ```
 # Government Project Design
+::: {.callout-note appearance="simple"}
+
 ## Task 5: NYC Parks Proposal
 
 ### Reviving the Green Canopy of District 43
 ```{r}
-#| code-fold: true
-#| code-summary: "Code"
+#| echo: false
 
 library(dplyr)
 library(sf)
@@ -541,21 +543,19 @@ focus_dead   <- dead_by_dist   |> filter(coun_dist == focus_dist)
 
 ```
 ### Project Description
-District 43 (Bay Ridge, Dyker Heights, and Bensonhurst) supports roughly 1,480 street trees, with a moderate canopy density of 19.6 trees per km². While this density is lower than neighboring districts such as 9 and 25 (both ≈ 33 trees per km²), District 43 has one of the <b>lowest dead-tree rates (0.9%),</b> showing strong maintenance but limited overall coverage. Many trees along main corridors like 86th Street and Fort Hamilton Parkway are older and planted in narrow sidewalk plots, limiting root space and future growth. The district would benefit from an expansion program to improve canopy coverage and shade in pedestrian-heavy zones.
+District 43 (Bay Ridge, Dyker Heights, and Bensonhurst) supports <b>13,129 street trees,</b> one of the densest canopies in NYC at <b>173.9 trees per km².</b> With a low <b>1.6% dead-tree rate,</b> the district’s urban forest is generally healthy, yet several corridors show aging trees, narrow pits, and limited shade. To strengthen long-term resilience and improve shade equity, we propose a <b>District 43 Urban Canopy Renewal Program</b> focused on strategic planting, targeted replacement, and essential maintenance.
 
 ### Proposed Program
 
 We propose a <b>District 43 Tree Expansion and Resilience Initiative</b> to strengthen the local canopy and address space constraints. The plan will:
 
-Plant ~600 new trees in under-shaded residential and commercial corridors.
+  *<b>Plant approximately 800 new trees</b> in under-shaded residential zones, school perimeters, and commercial corridors such as 86th          Street, 13th Avenue, Fort Hamilton Parkway.
 
-Replace ~100 aging or high-risk trees where sidewalk damage or decline is visible.
+  *<b>Replace about 150 high-risk or aging street trees</b> showing structural decline or severe sidewalk damage.
 
-Maintain ~800 existing trees through structural pruning and soil remediation near schools, senior centers, and community hubs.
+  *<b>Maintain and improve about 1,200 existing trees</b> through pruning, soil remediation, and tree-pit expansion to support healthier         root systems.
 
-Priority species include Honeylocust, Japanese Zelkova, and London Planetree, which thrive in compact urban soils and tolerate heat and pollution.
-
-The goal is to create a healthier, safer, and more vibrant urban canopy—reducing potential hazards, providing more shade, and improving air quality for residents and visitors in some of the district’s most active neighborhoods.
+Priority species include Honeylocust, Japanese Zelkova, and London Planetree - resilient options well-suited for compact urban soils and heat-exposed streetscapes.
 
 ### Zoomed-in Map: District 43 Trees
 ```{r}
@@ -566,27 +566,41 @@ The goal is to create a healthier, safer, and more vibrant urban canopy—reduci
 #| code-fold: true
 #| code-summary: "Code"
 
-# Filter district & trees 
-district_43 <- districts |> filter(as.integer(CounDist) == focus_dist) 
-trees_43 <- trees |> 
-filter(coalesce(as.integer(council_district), as.integer(cncldist)) == focus_dist) 
-# Ensure CRSs match 
-if (st_crs(trees_43) != st_crs(district_43)) { 
-  trees_43 <- st_transform(trees_43, st_crs(district_43)) 
-  } 
-# Plot zoomed to district bounds 
-ggplot() + geom_sf(data = district_43, fill = NA, color = "grey40", linewidth = 0.6) + 
-  geom_sf(data = trees_43, alpha = 0.25, size = 0.3) + 
-  coord_sf(xlim = st_bbox(district_43)[c("xmin","xmax")], 
-           ylim = st_bbox(district_43)[c("ymin","ymax")], expand = 0.02) + 
-  labs(title = "Street Trees in NYC Council District 43", 
-       subtitle = "Individual street-tree locations plotted within district boundaries", 
-       caption = "Data: NYC Street Tree Census (NYC Open Data) and NYC Council District Boundaries (DCP)") + 
-  theme_minimal(base_size = 11)
-```
-This map shows the spatial distribution of street trees within NYC Council District 43, which includes neighborhoods such as Bensonhurst, Dyker Heights, and parts of Bath Beach. Each point represents an individual street tree recorded in the NYC Street Tree Census. By zooming into the district boundaries, the visualization highlights the density and placement of trees along residential blocks, major avenues, and commercial corridors. This district-level view provides a baseline understanding of tree coverage patterns and helps identify areas where future maintenance, planting, or canopy expansion efforts may be prioritized.
+library(sf)
+library(dplyr)
+library(ggplot2)
 
+focus_dist <- 43
+
+# District boundary
+district_43 <- districts |>
+  filter(as.integer(CounDist) == focus_dist)
+
+# Extract trees for District 43 using your district column
+trees_43 <- trees |>
+  mutate(coun_dist = coalesce(as.integer(council_district),
+                              as.integer(cncldist))) |>
+  filter(coun_dist == focus_dist)
+
+# PLOT — no colors, no legend, just points
+ggplot() +
+  geom_sf(data = district_43, fill = NA, color = "grey40", linewidth = 0.7) +
+  geom_sf(data = trees_43, color = "darkgreen", size = 0.4, alpha = 0.7) +
+  coord_sf(
+    xlim = st_bbox(district_43)[c("xmin", "xmax")],
+    ylim = st_bbox(district_43)[c("ymin", "ymax")],
+    expand = 0.02
+  ) +
+  theme_minimal(base_size = 11) +
+  labs(
+    title    = "Street Trees in NYC Council District 43",
+    subtitle = "Individual street-tree locations within district boundaries",
+    caption  = "NYC Street Tree Census (NYC Open Data); NYC DCP Council Districts"
+  )
+
+```
 ### Why District 43 (vs. Peers)
+Compared to similar districts, District 43 demonstrates both <b>high canopy density and strong tree health,</b> making it an ideal candidate for strategic investment.
 ```{r}
 #| message: false
 #| warning: false
@@ -611,83 +625,93 @@ compare_df <- dens_by_dist |>
 
 compare_df
 ```
-District 43 falls below average in canopy density yet maintains one of the healthiest tree populations. Targeted investment here would expand coverage without high replacement costs, maximizing environmental benefits per dollar spent.
+District 43 leads in canopy density yet maintains low mortality, showing strong maintenance but clear opportunities to expand shade coverage in key pedestrian areas. Strategic investment here will build on a solid foundation and benefit a large number of residents.
 
 ### Non-Map Graphic: Density & Dead Share (D43 vs. Peers)
 ```{r}
-#| fig.width: 7
-#| fig.height: 3.8
 #| message: false
 #| warning: false
 #| code-fold: true
-#| code-summary: "Styled comparison chart"
+#| code-summary: "code"
 
-library(tidyr)
+library(cowplot)
+library(ggplot2)
+library(dplyr)
 
-peers <- c(focus_dist, peer_dists)
+# Your data
+compare_df <- tibble::tribble(
+  ~coun_dist, ~dead_share, ~density,
+  43, 1.6, 173.9,
+  9,  2.9, 149.1,
+  25, 1.3, 122.8,
+  36, 1.5, 118.5
+)
 
-compare_plot_df <- dens_by_dist %>%
-  select(coun_dist, tree_density_km2) %>%
-  left_join(dead_by_dist %>% select(coun_dist, frac_dead), by = "coun_dist") %>%
-  filter(coun_dist %in% peers)
-
-# Long format for faceting, compute % for dead share
-plot_df <- compare_plot_df %>%
-  mutate(coun_dist = factor(coun_dist, levels = peers)) %>%
-  pivot_longer(
-    cols = c(tree_density_km2, frac_dead),
-    names_to = "metric",
-    values_to = "value"
-  ) %>%
+compare_df <- compare_df %>%
   mutate(
-    metric = recode(metric,
-      tree_density_km2 = "Trees per km²",
-      frac_dead = "Dead Trees (%)"
-    ),
-    value_plot = ifelse(metric == "Dead Trees (%)", 100 * value, value),
-    highlight = ifelse(coun_dist == focus_dist, "District 43", "Peer")
+    fill_color = ifelse(coun_dist == 43, "#1f78b4", "#a9a9a9")
   )
 
-# Colors: highlight your district vs peers
-pal <- c("District 43" = "#2563EB",  # blue
-         "Peer"        = "#94A3B8")  # slate
-
-ggplot(plot_df, aes(x = coun_dist, y = value_plot, fill = highlight)) +
-  geom_col(width = 0.72, alpha = 0.95) +
-  geom_text(
-    aes(label = ifelse(
-      metric == "Dead Trees (%)",
-      paste0(round(value_plot, 1), "%"),
-      label_number(accuracy = 0.1)(value_plot)
-    )),
-    vjust = -0.35, size = 3.2, fontface = "bold"
-  ) +
-  facet_wrap(~ metric, scales = "free_y") +
-  scale_fill_manual(values = pal, guide = "none") +
+# Panel 1 — Trees per km² (NOW FIRST)
+p_density <- ggplot(compare_df, aes(x = factor(coun_dist),
+                                    y = density,
+                                    fill = fill_color)) +
+  geom_col() +
+  geom_text(aes(label = density),
+            vjust = -0.3, size = 3.8) +
+  scale_fill_identity() +
   labs(
-    title = "District 43 vs. Peer Districts",
-    subtitle = "Highlighting canopy density and dead-tree share",
+    title = "Trees per km²",
     x = "Council District",
-    y = NULL,
-    caption = "Density = trees per km²; Dead share = % with status = 'Dead'"
+    y = NULL
   ) +
-  scale_x_discrete(expand = expansion(mult = c(0.02, 0.02))) +
-  scale_y_continuous(expand = expansion(mult = c(0.0, 0.12))) +
   theme_minimal(base_size = 11) +
   theme(
-    plot.title = element_text(face = "bold", size = 13),
-    plot.subtitle = element_text(color = "#475569"),
-    strip.text = element_text(face = "bold"),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor = element_blank(),
-    axis.text.x = element_text(face = "bold"),
-    plot.caption = element_text(color = "#64748B", margin = margin(t = 4))
+    plot.title = element_text(size = 12, face = "bold"),
+    panel.grid.minor = element_blank()
   )
+
+# Panel 2 — Dead Trees % (NOW SECOND)
+p_dead <- ggplot(compare_df, aes(x = factor(coun_dist),
+                                 y = dead_share,
+                                 fill = fill_color)) +
+  geom_col() +
+  geom_text(aes(label = paste0(dead_share, "%")), 
+            vjust = -0.3, size = 3.8) +
+  scale_fill_identity() +
+  labs(
+    title = "Dead Trees (%)",
+    x = NULL,
+    y = NULL
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    plot.title = element_text(size = 12, face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+
+# Combine side by side — order FLIPPED (p_density first, p_dead second)
+final_plot <- cowplot::plot_grid(
+  p_density, p_dead,
+  nrow = 1,
+  labels = NULL
+)
+
+# Add title + subtitle
+cowplot::ggdraw() +
+  cowplot::draw_label("District 43 vs. Peer Districts",
+                      fontface = "bold", x = 0.5, y = 0.98, size = 14) +
+  cowplot::draw_label("Highlighting canopy density and dead-tree share",
+                      x = 0.5, y = 0.93, size = 11) +
+  cowplot::draw_plot(final_plot, x = 0, y = 0, width = 1, height = 0.9)
+
+
 ```
-This comparison highlights how District 43’s tree canopy and health differ from its peer districts. District 43 has a much lower dead-tree share (0.9%) than its peers, where dead-tree rates range from 1.3% to 3.6%, indicating generally healthier trees and more consistent maintenance. However, District 43 also shows a lower tree density (19.6 trees per km²) compared to denser districts such as Districts 9 and 25 (both above 33 trees per km²). This suggests that while District 43’s existing trees are in relatively good condition, the district has opportunities for canopy expansion through targeted planting efforts.
+This comparison highlights how District 43’s canopy strength and tree health differ from its peer districts. District 43 has the <b>highest canopy density</b> in the group (173.9 trees per km²), exceeding Districts 9, 25, and 36, which range from 118.5 to 149.1 trees per km². At the same time, District 43 maintains a low dead-tree share of 1.6%, indicating a generally healthy and well-maintained urban forest. Together, these metrics show that District 43 is a strong candidate for strategic canopy expansion, where new plantings can build on a healthy foundation and deliver high environmental value.
 
 ### Closing & Request
-We propose a $500,000 pilot program to expand and strengthen District 43’s tree canopy. The plan will plant approximately 600 new trees, replace around 100 aging or high-risk ones, and provide maintenance and soil care for roughly 800 existing trees across key corridors near schools, senior centers, and community spaces. With a current canopy density of 19.6 trees/km² and one of the lowest dead-tree rates in the city (0.9%), this initiative will build on a healthy foundation to close the gap with greener neighboring districts such as District 9 and 25. Investing now will ensure long-term canopy growth, safer streets, and a more resilient urban environment for Brooklyn residents.
+We request <b>$500,000</b> in funding for the District 43 Urban Canopy Renewal Program to plant new trees, replace aging ones, and improve maintenance across priority corridors. With strong existing canopy density and low mortality, District 43 is well-positioned for cost-effective expansion that will enhance walkability, reduce heat exposure, and support a healthier and more resilient urban environment for residents across Bay Ridge, Dyker Heights, and Bensonhurst.
+:::
 
 # Conclusion
-Overall, this project shows how combining the NYC Street Tree Census with City Council district boundaries can reveal clear patterns in canopy coverage, maintenance needs, and species composition across the city. By identifying districts with high density, high mortality, or limited coverage—such as District 43 compared to greener peers—we can target investments where they will deliver the greatest environmental and equity benefits. These insights provide a data-driven foundation for future Parks Department decisions on planting, maintenance, and long-term canopy planning.
+Overall, this project demonstrates how integrating the NYC Street Tree Census with City Council district boundaries reveals meaningful patterns in canopy density, tree health, and species distribution across the city. By identifying districts with strong coverage as well as those with elevated mortality or limited shade - such as the contrasts observed between District 43 and its peer districts - we can better understand where targeted planting and maintenance efforts will have the greatest environmental and equity impacts. These analyses provide a data-driven foundation for long-term decision-making by the NYC Parks Department, guiding strategic investments in planting, care, and urban canopy resilience citywide.

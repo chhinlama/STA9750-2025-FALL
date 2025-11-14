@@ -8,7 +8,7 @@
 
 <meta name="author" content="Chhin Lama">
 
-<title>MINI PROJECT 03 - Visualizing and Maintaining the Green Canopy of NYC – STA 9750 Submission Material</title>
+<title>MINI PROJECT 03 – STA 9750 Submission Material</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -182,19 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#task-4-district-level-analysis-of-tree-coverage" id="toc-task-4-district-level-analysis-of-tree-coverage" class="nav-link" data-scroll-target="#task-4-district-level-analysis-of-tree-coverage">Task 4: District-Level Analysis of Tree Coverage</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#government-project-design" id="toc-government-project-design" class="nav-link" data-scroll-target="#government-project-design">Government Project Design</a>
-  <ul class="collapse">
-  <li><a href="#task-5-nyc-parks-proposal" id="toc-task-5-nyc-parks-proposal" class="nav-link" data-scroll-target="#task-5-nyc-parks-proposal">Task 5: NYC Parks Proposal</a>
-  <ul class="collapse">
-  <li><a href="#reviving-the-green-canopy-of-district-43" id="toc-reviving-the-green-canopy-of-district-43" class="nav-link" data-scroll-target="#reviving-the-green-canopy-of-district-43">Reviving the Green Canopy of District 43</a></li>
-  <li><a href="#project-description" id="toc-project-description" class="nav-link" data-scroll-target="#project-description">Project Description</a></li>
-  <li><a href="#proposed-program" id="toc-proposed-program" class="nav-link" data-scroll-target="#proposed-program">Proposed Program</a></li>
-  <li><a href="#zoomed-in-map-district-43-trees" id="toc-zoomed-in-map-district-43-trees" class="nav-link" data-scroll-target="#zoomed-in-map-district-43-trees">Zoomed-in Map: District 43 Trees</a></li>
-  <li><a href="#why-district-43-vs.-peers" id="toc-why-district-43-vs.-peers" class="nav-link" data-scroll-target="#why-district-43-vs.-peers">Why District 43 (vs.&nbsp;Peers)</a></li>
-  <li><a href="#non-map-graphic-density-dead-share-d43-vs.-peers" id="toc-non-map-graphic-density-dead-share-d43-vs.-peers" class="nav-link" data-scroll-target="#non-map-graphic-density-dead-share-d43-vs.-peers">Non-Map Graphic: Density &amp; Dead Share (D43 vs.&nbsp;Peers)</a></li>
-  <li><a href="#closing-request" id="toc-closing-request" class="nav-link" data-scroll-target="#closing-request">Closing &amp; Request</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#government-project-design" id="toc-government-project-design" class="nav-link" data-scroll-target="#government-project-design">Government Project Design</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -204,7 +192,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MINI PROJECT 03 - Visualizing and Maintaining the Green Canopy of NYC</h1>
+<h1 class="title">MINI PROJECT 03</h1>
+<p class="subtitle lead">Visualizing and Maintaining the Green Canopy of NYC</p>
 </div>
 
 
@@ -229,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>New York City’s vast network of trees is a vital part of its urban ecosystem — improving air quality, reducing heat, and enhancing livability for millions of residents. This project, Visualizing and Maintaining the Green Canopy of NYC, explores the NYC TreeMap dataset to analyze the distribution, diversity, and health of over 650,000 street trees across all 51 City Council districts. Through spatial analysis and data visualization, we highlight areas of need, uncover patterns in species composition, and propose data-driven strategies for equitable green investment across the city.</p>
+<p>New York City’s extensive network of more than 650,000 street trees plays a critical role in cooling neighborhoods, improving air quality, and enhancing everyday quality of life. This project analyzes the NYC Street Tree Census and council district boundaries to understand the spatial distribution, species composition, and health of the city’s urban canopy. Through mapping and district-level analytics, we identify areas with strong coverage and others that require targeted planting or maintenance to advance canopy equity across the city.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -582,7 +571,7 @@ Note
 <h3 class="anchored" data-anchor-id="task-4-district-level-analysis-of-tree-coverage">Task 4: District-Level Analysis of Tree Coverage</h3>
 <p>We integrate the tree point data with City Council district boundaries using a spatial join to better understand NYC’s urban forest. This allows us to explore several key questions—such as which districts have the most trees, the highest density, or the largest share of dead trees—laying the groundwork for district-level analysis.</p>
 <p>Q1. Which council district has the most trees?</p>
-<p>Council District 23 has the most trees, with a total of 7,774 trees — significantly higher than any other district in the top 10 list.</p>
+<p>Council District 51 has the most trees, with a total of 51,211 - the highest count citywide.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -610,7 +599,7 @@ Note
 </div>
 </div>
 <p>Q2. Which council district has the highest density of trees? The Shape_Area column from the district shape file will be helpful here.</p>
-<p>Council District 4 has the highest tree density, with 41.05 trees per square kilometer, making it the most canopy-dense district relative to land area.</p>
+<p>Council District 43 has the highest tree density, with approximately 174 trees per square kilometer - the densest canopy in the city.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -648,7 +637,7 @@ Note
 </details>
 </div>
 <p>Q3. Which district has highest fraction of dead trees out of all trees?</p>
-<p>The council district with the highest fraction of dead trees is District 17, where approximately 5.7% of all trees are recorded as dead.</p>
+<p>District 16 has the highest share of dead trees, with approximately 5.4% of its tree population recorded as dead.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -691,7 +680,7 @@ Note
 </div>
 </div>
 <p>Q4. What is the most common tree species in Manhattan?</p>
-<p>The most common tree species in Manhattan is Honeylocust, with a total of 3,887 trees recorded.</p>
+<p>Honeylocust is the most common species in Manhattan with 13,905 recorded trees.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -741,7 +730,7 @@ Note
 </div>
 </div>
 <p>Q5. What is the species of the tree closest to Baruch’s campus?</p>
-<p>The tree closest to Baruch College’s campus is a Honeylocust (Gleditsia triacanthos var. inermis), located at 333 3rd Avenue, Manhattan. It is alive, has a diameter of 4 inches, and stands approximately 335.7 feet (≈102 meters) away from Baruch’s main location.</p>
+<p>The nearest tree to Baruch College is a Callery Pear (Pyrus calleryana), located at 137 East 25th Street in Manhattan. It is alive, has a diameter of 9 inches, and is approximately 74 meters (243 feet) from Baruch’s campus.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -798,98 +787,67 @@ Projected CRS: NAD83 / New York Long Island (ftUS)
 </section>
 <section id="government-project-design" class="level1">
 <h1>Government Project Design</h1>
-<section id="task-5-nyc-parks-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="task-5-nyc-parks-proposal">Task 5: NYC Parks Proposal</h2>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Task 5: NYC Parks Proposal
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <section id="reviving-the-green-canopy-of-district-43" class="level3">
 <h3 class="anchored" data-anchor-id="reviving-the-green-canopy-of-district-43">Reviving the Green Canopy of District 43</h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>focus_dist <span class="ot">&lt;-</span> <span class="dv">43</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>peer_dists  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">25</span>, <span class="dv">36</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>counts_by_dist <span class="ot">&lt;-</span> trees <span class="sc">|&gt;</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">coun_dist =</span> <span class="fu">coalesce</span>(<span class="fu">as.integer</span>(council_district), <span class="fu">as.integer</span>(cncldist))) <span class="sc">|&gt;</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(coun_dist)) <span class="sc">|&gt;</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(coun_dist, <span class="at">name =</span> <span class="st">"total_trees"</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>dead_by_dist <span class="ot">&lt;-</span> trees <span class="sc">|&gt;</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">coun_dist =</span> <span class="fu">coalesce</span>(<span class="fu">as.integer</span>(council_district), <span class="fu">as.integer</span>(cncldist))) <span class="sc">|&gt;</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(coun_dist)) <span class="sc">|&gt;</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(coun_dist) <span class="sc">|&gt;</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="at">total_trees =</span> <span class="fu">n</span>(),</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="at">dead_trees  =</span> <span class="fu">sum</span>(status <span class="sc">==</span> <span class="st">"Dead"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="at">frac_dead   =</span> dead_trees <span class="sc">/</span> total_trees,</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Area + density (trees per km^2)</span></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>dens_by_dist <span class="ot">&lt;-</span> districts <span class="sc">|&gt;</span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">coun_dist =</span> CounDist) <span class="sc">|&gt;</span></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(counts_by_dist, <span class="at">by =</span> <span class="st">"coun_dist"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="at">total_trees =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(total_trees), <span class="dv">0</span>, total_trees),</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="at">tree_density_km2 =</span> total_trees <span class="sc">/</span> (Shape_Area <span class="sc">/</span> <span class="fl">1e6</span>)</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull focus numbers for inline use</span></span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>focus_counts <span class="ot">&lt;-</span> counts_by_dist <span class="sc">|&gt;</span> <span class="fu">filter</span>(coun_dist <span class="sc">==</span> focus_dist)</span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>focus_dens   <span class="ot">&lt;-</span> dens_by_dist   <span class="sc">|&gt;</span> <span class="fu">filter</span>(coun_dist <span class="sc">==</span> focus_dist)</span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>focus_dead   <span class="ot">&lt;-</span> dead_by_dist   <span class="sc">|&gt;</span> <span class="fu">filter</span>(coun_dist <span class="sc">==</span> focus_dist)</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Safeguards for inline:</span></span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>.f_total  <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">nrow</span>(focus_counts)<span class="sc">==</span><span class="dv">1</span>, focus_counts<span class="sc">$</span>total_trees, <span class="cn">NA_integer_</span>)</span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>.f_dens   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">nrow</span>(focus_dens)<span class="sc">==</span><span class="dv">1</span>,   focus_dens<span class="sc">$</span>tree_density_km2, <span class="cn">NA_real_</span>)</span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>.f_frac   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">nrow</span>(focus_dead)<span class="sc">==</span><span class="dv">1</span>,   focus_dead<span class="sc">$</span>frac_dead, <span class="cn">NA_real_</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
 </section>
 <section id="project-description" class="level3">
 <h3 class="anchored" data-anchor-id="project-description">Project Description</h3>
-<p>District 43 (Bay Ridge, Dyker Heights, and Bensonhurst) supports roughly 1,480 street trees, with a moderate canopy density of 19.6 trees per km². While this density is lower than neighboring districts such as 9 and 25 (both ≈ 33 trees per km²), District 43 has one of the <b>lowest dead-tree rates (0.9%),</b> showing strong maintenance but limited overall coverage. Many trees along main corridors like 86th Street and Fort Hamilton Parkway are older and planted in narrow sidewalk plots, limiting root space and future growth. The district would benefit from an expansion program to improve canopy coverage and shade in pedestrian-heavy zones.</p>
+<p>District 43 (Bay Ridge, Dyker Heights, and Bensonhurst) supports <b>13,129 street trees,</b> one of the densest canopies in NYC at <b>173.9 trees per km².</b> With a low <b>1.6% dead-tree rate,</b> the district’s urban forest is generally healthy, yet several corridors show aging trees, narrow pits, and limited shade. To strengthen long-term resilience and improve shade equity, we propose a <b>District 43 Urban Canopy Renewal Program</b> focused on strategic planting, targeted replacement, and essential maintenance.</p>
 </section>
 <section id="proposed-program" class="level3">
 <h3 class="anchored" data-anchor-id="proposed-program">Proposed Program</h3>
 <p>We propose a <b>District 43 Tree Expansion and Resilience Initiative</b> to strengthen the local canopy and address space constraints. The plan will:</p>
-<p>Plant ~600 new trees in under-shaded residential and commercial corridors.</p>
-<p>Replace ~100 aging or high-risk trees where sidewalk damage or decline is visible.</p>
-<p>Maintain ~800 existing trees through structural pruning and soil remediation near schools, senior centers, and community hubs.</p>
-<p>Priority species include Honeylocust, Japanese Zelkova, and London Planetree, which thrive in compact urban soils and tolerate heat and pollution.</p>
-<p>The goal is to create a healthier, safer, and more vibrant urban canopy—reducing potential hazards, providing more shade, and improving air quality for residents and visitors in some of the district’s most active neighborhoods.</p>
+<p>*<b>Plant approximately 800 new trees</b> in under-shaded residential zones, school perimeters, and commercial corridors such as 86th Street, 13th Avenue, Fort Hamilton Parkway.</p>
+<p>*<b>Replace about 150 high-risk or aging street trees</b> showing structural decline or severe sidewalk damage.</p>
+<p>*<b>Maintain and improve about 1,200 existing trees</b> through pruning, soil remediation, and tree-pit expansion to support healthier root systems.</p>
+<p>Priority species include Honeylocust, Japanese Zelkova, and London Planetree - resilient options well-suited for compact urban soils and heat-exposed streetscapes.</p>
 </section>
 <section id="zoomed-in-map-district-43-trees" class="level3">
 <h3 class="anchored" data-anchor-id="zoomed-in-map-district-43-trees">Zoomed-in Map: District 43 Trees</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter district &amp; trees </span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>district_43 <span class="ot">&lt;-</span> districts <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">as.integer</span>(CounDist) <span class="sc">==</span> focus_dist) </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>trees_43 <span class="ot">&lt;-</span> trees <span class="sc">|&gt;</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(<span class="fu">coalesce</span>(<span class="fu">as.integer</span>(council_district), <span class="fu">as.integer</span>(cncldist)) <span class="sc">==</span> focus_dist) </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure CRSs match </span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">st_crs</span>(trees_43) <span class="sc">!=</span> <span class="fu">st_crs</span>(district_43)) { </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  trees_43 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(trees_43, <span class="fu">st_crs</span>(district_43)) </span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot zoomed to district bounds </span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data =</span> district_43, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"grey40"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span> </span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> trees_43, <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">size =</span> <span class="fl">0.3</span>) <span class="sc">+</span> </span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">st_bbox</span>(district_43)[<span class="fu">c</span>(<span class="st">"xmin"</span>,<span class="st">"xmax"</span>)], </span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">ylim =</span> <span class="fu">st_bbox</span>(district_43)[<span class="fu">c</span>(<span class="st">"ymin"</span>,<span class="st">"ymax"</span>)], <span class="at">expand =</span> <span class="fl">0.02</span>) <span class="sc">+</span> </span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Street Trees in NYC Council District 43"</span>, </span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Individual street-tree locations plotted within district boundaries"</span>, </span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Data: NYC Street Tree Census (NYC Open Data) and NYC Council District Boundaries (DCP)"</span>) <span class="sc">+</span> </span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>focus_dist <span class="ot">&lt;-</span> <span class="dv">43</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># District boundary</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>district_43 <span class="ot">&lt;-</span> districts <span class="sc">|&gt;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">as.integer</span>(CounDist) <span class="sc">==</span> focus_dist)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract trees for District 43 using your district column</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>trees_43 <span class="ot">&lt;-</span> trees <span class="sc">|&gt;</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">coun_dist =</span> <span class="fu">coalesce</span>(<span class="fu">as.integer</span>(council_district),</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">as.integer</span>(cncldist))) <span class="sc">|&gt;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(coun_dist <span class="sc">==</span> focus_dist)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># PLOT — no colors, no legend, just points</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> district_43, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"grey40"</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> trees_43, <span class="at">color =</span> <span class="st">"darkgreen"</span>, <span class="at">size =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">st_bbox</span>(district_43)[<span class="fu">c</span>(<span class="st">"xmin"</span>, <span class="st">"xmax"</span>)],</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">st_bbox</span>(district_43)[<span class="fu">c</span>(<span class="st">"ymin"</span>, <span class="st">"ymax"</span>)],</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fl">0.02</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">"Street Trees in NYC Council District 43"</span>,</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Individual street-tree locations within district boundaries"</span>,</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption  =</span> <span class="st">"NYC Street Tree Census (NYC Open Data); NYC DCP Council Districts"</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -899,30 +857,30 @@ Projected CRS: NAD83 / New York Long Island (ftUS)
 </div>
 </div>
 </div>
-<p>This map shows the spatial distribution of street trees within NYC Council District 43, which includes neighborhoods such as Bensonhurst, Dyker Heights, and parts of Bath Beach. Each point represents an individual street tree recorded in the NYC Street Tree Census. By zooming into the district boundaries, the visualization highlights the density and placement of trees along residential blocks, major avenues, and commercial corridors. This district-level view provides a baseline understanding of tree coverage patterns and helps identify areas where future maintenance, planting, or canopy expansion efforts may be prioritized.</p>
 </section>
 <section id="why-district-43-vs.-peers" class="level3">
 <h3 class="anchored" data-anchor-id="why-district-43-vs.-peers">Why District 43 (vs.&nbsp;Peers)</h3>
+<p>Compared to similar districts, District 43 demonstrates both <b>high canopy density and strong tree health,</b> making it an ideal candidate for strategic investment.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>peers <span class="ot">&lt;-</span> <span class="fu">c</span>(focus_dist, peer_dists)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>compare_df <span class="ot">&lt;-</span> dens_by_dist <span class="sc">|&gt;</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coun_dist, total_trees, tree_density_km2) <span class="sc">|&gt;</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dead_by_dist <span class="sc">|&gt;</span> <span class="fu">select</span>(coun_dist, frac_dead), <span class="at">by =</span> <span class="st">"coun_dist"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(coun_dist <span class="sc">%in%</span> peers) <span class="sc">|&gt;</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_trees =</span> <span class="fu">comma</span>(total_trees),</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">tree_density_km2 =</span> <span class="fu">round</span>(tree_density_km2, <span class="dv">1</span>),</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">frac_dead =</span> <span class="fu">round</span>(frac_dead <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)  <span class="co"># convert to %</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"trees per km²"</span> <span class="ot">=</span> tree_density_km2,</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"dead trees (%)"</span> <span class="ot">=</span> frac_dead</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>compare_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>peers <span class="ot">&lt;-</span> <span class="fu">c</span>(focus_dist, peer_dists)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>compare_df <span class="ot">&lt;-</span> dens_by_dist <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coun_dist, total_trees, tree_density_km2) <span class="sc">|&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dead_by_dist <span class="sc">|&gt;</span> <span class="fu">select</span>(coun_dist, frac_dead), <span class="at">by =</span> <span class="st">"coun_dist"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(coun_dist <span class="sc">%in%</span> peers) <span class="sc">|&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_trees =</span> <span class="fu">comma</span>(total_trees),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">tree_density_km2 =</span> <span class="fu">round</span>(tree_density_km2, <span class="dv">1</span>),</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">frac_dead =</span> <span class="fu">round</span>(frac_dead <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)  <span class="co"># convert to %</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"trees per km²"</span> <span class="ot">=</span> tree_density_km2,</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"dead trees (%)"</span> <span class="ot">=</span> frac_dead</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>compare_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  coun_dist total_trees trees per km² dead trees (%)
@@ -932,74 +890,83 @@ Projected CRS: NAD83 / New York Long Island (ftUS)
 4        25       7,841         122.8            1.3</code></pre>
 </div>
 </div>
-<p>District 43 falls below average in canopy density yet maintains one of the healthiest tree populations. Targeted investment here would expand coverage without high replacement costs, maximizing environmental benefits per dollar spent.</p>
+<p>District 43 leads in canopy density yet maintains low mortality, showing strong maintenance but clear opportunities to expand shade coverage in key pedestrian areas. Strategic investment here will build on a solid foundation and benefit a large number of residents.</p>
 </section>
 <section id="non-map-graphic-density-dead-share-d43-vs.-peers" class="level3">
 <h3 class="anchored" data-anchor-id="non-map-graphic-density-dead-share-d43-vs.-peers">Non-Map Graphic: Density &amp; Dead Share (D43 vs.&nbsp;Peers)</h3>
 <div class="cell">
 <details class="code-fold">
-<summary>Styled comparison chart</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>peers <span class="ot">&lt;-</span> <span class="fu">c</span>(focus_dist, peer_dists)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>compare_plot_df <span class="ot">&lt;-</span> dens_by_dist <span class="sc">%&gt;%</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coun_dist, tree_density_km2) <span class="sc">%&gt;%</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(dead_by_dist <span class="sc">%&gt;%</span> <span class="fu">select</span>(coun_dist, frac_dead), <span class="at">by =</span> <span class="st">"coun_dist"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(coun_dist <span class="sc">%in%</span> peers)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Long format for faceting, compute % for dead share</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> compare_plot_df <span class="sc">%&gt;%</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">coun_dist =</span> <span class="fu">factor</span>(coun_dist, <span class="at">levels =</span> peers)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(tree_density_km2, frac_dead),</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"metric"</span>,</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="fu">recode</span>(metric,</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">tree_density_km2 =</span> <span class="st">"Trees per km²"</span>,</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">frac_dead =</span> <span class="st">"Dead Trees (%)"</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_plot =</span> <span class="fu">ifelse</span>(metric <span class="sc">==</span> <span class="st">"Dead Trees (%)"</span>, <span class="dv">100</span> <span class="sc">*</span> value, value),</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">highlight =</span> <span class="fu">ifelse</span>(coun_dist <span class="sc">==</span> focus_dist, <span class="st">"District 43"</span>, <span class="st">"Peer"</span>)</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Colors: highlight your district vs peers</span></span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"District 43"</span> <span class="ot">=</span> <span class="st">"#2563EB"</span>,  <span class="co"># blue</span></span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Peer"</span>        <span class="ot">=</span> <span class="st">"#94A3B8"</span>)  <span class="co"># slate</span></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> coun_dist, <span class="at">y =</span> value_plot, <span class="at">fill =</span> highlight)) <span class="sc">+</span></span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.72</span>, <span class="at">alpha =</span> <span class="fl">0.95</span>) <span class="sc">+</span></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(</span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>      metric <span class="sc">==</span> <span class="st">"Dead Trees (%)"</span>,</span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="fu">round</span>(value_plot, <span class="dv">1</span>), <span class="st">"%"</span>),</span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">label_number</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>)(value_plot)</span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>    )),</span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.35</span>, <span class="at">size =</span> <span class="fl">3.2</span>, <span class="at">fontface =</span> <span class="st">"bold"</span></span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> metric, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> pal, <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"District 43 vs. Peer Districts"</span>,</span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Highlighting canopy density and dead-tree share"</span>,</span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Council District"</span>,</span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Density = trees per km²; Dead share = % with status = 'Dead'"</span></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="fl">0.02</span>, <span class="fl">0.02</span>))) <span class="sc">+</span></span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="fl">0.0</span>, <span class="fl">0.12</span>))) <span class="sc">+</span></span>
-<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
-<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">13</span>),</span>
-<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#475569"</span>),</span>
-<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#64748B"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">4</span>))</span>
-<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<summary>code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Your data</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>compare_df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>coun_dist, <span class="sc">~</span>dead_share, <span class="sc">~</span>density,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="dv">43</span>, <span class="fl">1.6</span>, <span class="fl">173.9</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="dv">9</span>,  <span class="fl">2.9</span>, <span class="fl">149.1</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">25</span>, <span class="fl">1.3</span>, <span class="fl">122.8</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="dv">36</span>, <span class="fl">1.5</span>, <span class="fl">118.5</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>compare_df <span class="ot">&lt;-</span> compare_df <span class="sc">%&gt;%</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill_color =</span> <span class="fu">ifelse</span>(coun_dist <span class="sc">==</span> <span class="dv">43</span>, <span class="st">"#1f78b4"</span>, <span class="st">"#a9a9a9"</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Panel 1 — Trees per km² (NOW FIRST)</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>p_density <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(compare_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(coun_dist),</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">y =</span> density,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">fill =</span> fill_color)) <span class="sc">+</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> density),</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.3</span>, <span class="at">size =</span> <span class="fl">3.8</span>) <span class="sc">+</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Trees per km²"</span>,</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Council District"</span>,</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Panel 2 — Dead Trees % (NOW SECOND)</span></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>p_dead <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(compare_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(coun_dist),</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">y =</span> dead_share,</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">fill =</span> fill_color)) <span class="sc">+</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(dead_share, <span class="st">"%"</span>)), </span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.3</span>, <span class="at">size =</span> <span class="fl">3.8</span>) <span class="sc">+</span></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Dead Trees (%)"</span>,</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine side by side — order FLIPPED (p_density first, p_dead second)</span></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>final_plot <span class="ot">&lt;-</span> cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(</span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a>  p_density, p_dead,</span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">1</span>,</span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="cn">NULL</span></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title + subtitle</span></span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">ggdraw</span>() <span class="sc">+</span></span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a>  cowplot<span class="sc">::</span><span class="fu">draw_label</span>(<span class="st">"District 43 vs. Peer Districts"</span>,</span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a>                      <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">0.98</span>, <span class="at">size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a>  cowplot<span class="sc">::</span><span class="fu">draw_label</span>(<span class="st">"Highlighting canopy density and dead-tree share"</span>,</span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a>                      <span class="at">x =</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">0.93</span>, <span class="at">size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a>  cowplot<span class="sc">::</span><span class="fu">draw_plot</span>(final_plot, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">width =</span> <span class="dv">1</span>, <span class="at">height =</span> <span class="fl">0.9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1009,17 +976,18 @@ Projected CRS: NAD83 / New York Long Island (ftUS)
 </div>
 </div>
 </div>
-<p>This comparison highlights how District 43’s tree canopy and health differ from its peer districts. District 43 has a much lower dead-tree share (0.9%) than its peers, where dead-tree rates range from 1.3% to 3.6%, indicating generally healthier trees and more consistent maintenance. However, District 43 also shows a lower tree density (19.6 trees per km²) compared to denser districts such as Districts 9 and 25 (both above 33 trees per km²). This suggests that while District 43’s existing trees are in relatively good condition, the district has opportunities for canopy expansion through targeted planting efforts.</p>
+<p>This comparison highlights how District 43’s canopy strength and tree health differ from its peer districts. District 43 has the <b>highest canopy density</b> in the group (173.9 trees per km²), exceeding Districts 9, 25, and 36, which range from 118.5 to 149.1 trees per km². At the same time, District 43 maintains a low dead-tree share of 1.6%, indicating a generally healthy and well-maintained urban forest. Together, these metrics show that District 43 is a strong candidate for strategic canopy expansion, where new plantings can build on a healthy foundation and deliver high environmental value.</p>
 </section>
 <section id="closing-request" class="level3">
 <h3 class="anchored" data-anchor-id="closing-request">Closing &amp; Request</h3>
-<p>We propose a $500,000 pilot program to expand and strengthen District 43’s tree canopy. The plan will plant approximately 600 new trees, replace around 100 aging or high-risk ones, and provide maintenance and soil care for roughly 800 existing trees across key corridors near schools, senior centers, and community spaces. With a current canopy density of 19.6 trees/km² and one of the lowest dead-tree rates in the city (0.9%), this initiative will build on a healthy foundation to close the gap with greener neighboring districts such as District 9 and 25. Investing now will ensure long-term canopy growth, safer streets, and a more resilient urban environment for Brooklyn residents.</p>
+<p>We request <b>$500,000</b> in funding for the District 43 Urban Canopy Renewal Program to plant new trees, replace aging ones, and improve maintenance across priority corridors. With strong existing canopy density and low mortality, District 43 is well-positioned for cost-effective expansion that will enhance walkability, reduce heat exposure, and support a healthier and more resilient urban environment for residents across Bay Ridge, Dyker Heights, and Bensonhurst.</p>
 </section>
-</section>
+</div>
+</div>
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
-<p>Overall, this project shows how combining the NYC Street Tree Census with City Council district boundaries can reveal clear patterns in canopy coverage, maintenance needs, and species composition across the city. By identifying districts with high density, high mortality, or limited coverage—such as District 43 compared to greener peers—we can target investments where they will deliver the greatest environmental and equity benefits. These insights provide a data-driven foundation for future Parks Department decisions on planting, maintenance, and long-term canopy planning.</p>
+<p>Overall, this project demonstrates how integrating the NYC Street Tree Census with City Council district boundaries reveals meaningful patterns in canopy density, tree health, and species distribution across the city. By identifying districts with strong coverage as well as those with elevated mortality or limited shade - such as the contrasts observed between District 43 and its peer districts - we can better understand where targeted planting and maintenance efforts will have the greatest environmental and equity impacts. These analyses provide a data-driven foundation for long-term decision-making by the NYC Parks Department, guiding strategic investments in planting, care, and urban canopy resilience citywide.</p>
 
 
 </section>
