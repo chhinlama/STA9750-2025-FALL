@@ -285,6 +285,39 @@ if (isTRUE(use_dev)) {
 To begin exploring the dataset, it is helpful to visualize the spatial distribution of trees across New York City.
 By overlaying individual tree locations onto the city’s council district boundaries using ggplot2 and geom_sf(), we can observe overall coverage patterns and identify areas of high or low tree density.
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(sf)
+
+# Remove the broken geometry column
+trees_df <- sf::st_drop_geometry(trees)
+
+class(trees_df)
+# should now be just "data.frame" or "tbl_df" etc., NOT "sf"
+names(trees_df)
+
+```
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+trees <- st_as_sf(
+  trees_df,
+  coords = c("longitude", "latitude"),  # <-- change to your actual column names
+  crs = 4326,                            # WGS 84
+  remove = FALSE
+)
+
+class(trees)
+head(st_geometry(trees))
+
+```
+
+
+```{r}
+#| warning: false
+#| message: false
 #| code-fold: true
 #| code-summary: "Code"
 pkgs <- c("ggplot2", "sf", "dplyr")
@@ -295,37 +328,43 @@ library(ggplot2)
 library(sf)
 library(dplyr)
 
-# Use your dev subset while building, switch to full for final
 trees_plot <- trees
 
-# Make sure CRS matches (both should be WGS84 already, but just in case)
 if (st_crs(trees_plot) != st_crs(districts)) {
   trees_plot <- st_transform(trees_plot, st_crs(districts))
 }
 
-# Optional: speed up plotting by sampling points during dev (remove for final)
 set.seed(1)
-trees_plot_small <- trees_plot %>%
-  dplyr::slice_sample(n = min(100000, nrow(trees_plot)))  # cap at 100k points for speed
+trees_plot_small <- trees_plot |>
+  dplyr::slice_sample(n = min(100000, nrow(trees_plot)))
 
-districts_s <- districts %>%
-  dplyr::mutate(geometry = sf::st_simplify(geometry, dTolerance = 5))  # try 5–20m if still slow
+districts_s <- districts |>
+  dplyr::mutate(geometry = sf::st_simplify(geometry, dTolerance = 5))
 
-p_all <- ggplot() +
-  geom_sf(data = districts_s, fill = NA, color = "grey50", linewidth = 0.3) +
-  geom_sf(data = trees_plot_small, alpha = 0.15, size = 0.1) +
+ggplot() +
+  geom_sf(data = districts_s,
+          fill   = "grey95",
+          color  = "black",
+          linewidth = 0.4) +
+  geom_sf(data  = trees_plot_small,
+          color = "#2ca25f",
+          alpha = 0.5,
+          size  = 0.2) +
   coord_sf(datum = NA) +
   theme_minimal(base_size = 11) +
   theme(
     panel.grid.major = element_line(color = "grey90"),
-    panel.grid.minor = element_blank()
+    panel.grid.minor = element_blank(),
+    plot.title    = element_text(hjust = 0.5, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5)
   ) +
   labs(
-    title = "NYC Trees over City Council Districts",
-    subtitle = "Points = individual trees (sampled during development for speed)",
-    caption = "Data: NYC Open Data (Street Tree Census) & NYC Dept. of City Planning (Council Districts)"
+    title    = "NYC Street Trees by Council District",
+    subtitle = "Trees shown as points over council district boundaries",
+    caption  = "Data: NYC Street Tree Census (NYC Open Data); NYC DCP Council Districts",
+    x = NULL, y = NULL
   )
-p_all
+
 ```
 
 ## District-Level Analyses of Trees
@@ -547,13 +586,13 @@ District 43 (Bay Ridge, Dyker Heights, and Bensonhurst) supports <b>13,129 stree
 
 ### Proposed Program
 
-We propose a <b>District 43 Tree Expansion and Resilience Initiative</b> to strengthen the local canopy and address space constraints. The plan will:
+The <b>District 43 Tree Expansion and Resilience Initiative</b> will include:
 
-  *<b>Plant approximately 800 new trees</b> in under-shaded residential zones, school perimeters, and commercial corridors such as 86th          Street, 13th Avenue, Fort Hamilton Parkway.
+  <b>Plant approximately 800 new trees</b> in under-shaded residential zones, school    perimeters, and commercial corridors such as 86th Street, 13th Avenue, Fort Hamilton Parkway.
 
-  *<b>Replace about 150 high-risk or aging street trees</b> showing structural decline or severe sidewalk damage.
+  <b>Replace about 150 high-risk or aging street trees</b> showing structural decline or severe sidewalk damage.
 
-  *<b>Maintain and improve about 1,200 existing trees</b> through pruning, soil remediation, and tree-pit expansion to support healthier         root systems.
+  <b>Maintain and improve about 1,200 existing trees</b> through pruning, soil remediation, and tree-pit expansion to support healthier         root systems.
 
 Priority species include Honeylocust, Japanese Zelkova, and London Planetree - resilient options well-suited for compact urban soils and heat-exposed streetscapes.
 
