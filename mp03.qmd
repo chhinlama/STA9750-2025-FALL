@@ -293,10 +293,6 @@ library(sf)
 # Remove the broken geometry column
 trees_df <- sf::st_drop_geometry(trees)
 
-class(trees_df)
-# should now be just "data.frame" or "tbl_df" etc., NOT "sf"
-names(trees_df)
-
 ```
 ```{r}
 #| echo: false
@@ -308,9 +304,6 @@ trees <- st_as_sf(
   crs = 4326,                            # WGS 84
   remove = FALSE
 )
-
-class(trees)
-head(st_geometry(trees))
 
 ```
 
