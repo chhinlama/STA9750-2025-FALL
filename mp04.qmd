@@ -26,7 +26,7 @@ cat("
 ::: {.callout-note}
 **Outline of This Report**
 
-- In **Task 1** Recreate the BLS POST request using httr2 and scrape the full CES Total Nonfarm Payroll series (1979-2025) directly from HTML output.
+- In **Task 1** Recreate the BLS POST request using `httr2` and scrape the full CES Total Nonfarm Payroll series (1979-2025) directly from HTML output.
 - In **Task 2**, Parse the complete CES revision tables to reconstruct first and final employment estimates for every month.
 - In **Task 3**, Merge the datasets, compute revision metrics, and visualize long-run trends and patterns.
 - In **Task 4**, Apply statistical inference to test for bias, structural breaks, and sensitivity to large monthly employment changes.
@@ -39,7 +39,7 @@ cat("
 # Data Acquisition
 ## Task 1: Download CES Total Nonfarm Payroll
 
-Using httr2 and rvest, I replicated the browser POST request required to access CES Data Finder 1.1, scraped the full employment table for 1979-2025, and transformed it into a clean {date, level} dataset. The final dataset contains 558 monthly observations from January 1979 through June 2025.
+Using `httr2` and `rvest`, I replicated the browser POST request required to access CES Data Finder 1.1, scraped the full employment table for 1979-2025, and transformed it into a clean {date, level} dataset. The final dataset contains 558 monthly observations from January 1979 through June 2025.
 ```{r}
 #| warning: false
 #| message: false
@@ -655,7 +655,7 @@ test_large_change
 ```
 # Fact Check BLS Revisions
 
-## Task 5: Fact Checkes of Claims about BLS
+## Task 5: Fact Checks of Claims about BLS
 
 In this final section, I evaluate two widely circulated claims regarding the accuracy of CES employment estimates and whether revisions in recent years signal political or methodological problems at the Bureau of Labor Statistics. Each fact check uses:
 
