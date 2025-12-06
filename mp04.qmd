@@ -149,13 +149,6 @@ load_ces_data <- function() {
   
   return(ces_data)
 }
-```
-
-```{r}
-#| warning: false
-#| message: false
-#| code-fold: true
-#| code-summary: "Code"
 
 folder <- "data/mp04"
 dir.create(folder, showWarnings = FALSE)
@@ -218,13 +211,6 @@ if (!file.exists(rev_file)) {
   rev_resp <- req_perform(rev_req)
   writeBin(resp_body_raw(rev_resp), rev_file)
 }
-
-```
-```{r}
-#| warning: false
-#| message: false
-#| code-fold: true
-#| code-summary: "Code"
 
 # Read the revisions HTML we just downloaded and turn it into lines
 html_rev   <- read_html(rev_file)
@@ -383,22 +369,6 @@ ces_joined <- ces_levels |>
     decade = floor(year / 10) * 10
   )
 
-```
-```{r}
-mean_abs_pct_rev <- ces_joined |>
-  summarise(mean_abs_pct = mean(abs_pct_revision, na.rm = TRUE)) |>
-  pull(mean_abs_pct)
-
-mean_abs_pct_rev
-
-```
-
-```{r}
-#| warning: false
-#| message: false
-#| code-fold: true
-#| code-summary: "Code"
-
 # 1) Largest positive revision
 largest_positive <- ces_joined |>
   slice_max(revision, n = 1)
@@ -436,12 +406,15 @@ pos_fraction_by_decade <- ces_joined |>
   arrange(decade)
 
 # Print results
-largest_positive
-largest_negative
-avg_abs_revision
-avg_abs_pct_revision
-year_with_highest_abs_rev
-pos_fraction_by_decade
+task3_summary <- tibble(
+  largest_positive = largest_positive$revision,
+  largest_negative = largest_negative$revision,
+  mean_abs_revision = avg_abs_revision$mean_abs_revision,
+  mean_abs_pct_revision = avg_abs_pct_revision$mean_abs_pct_revision
+)
+
+task3_summary
+
 ```
 # Visuals
 ### Plot 1: First vs final CES estimates
@@ -531,8 +504,7 @@ p3
 ```
 Absolute percent revisions remain extremely small throughout most of the series.  
 The average absolute percent revision is 
-**`r scales::percent(mean_abs_pct_rev, accuracy = 0.01)`**, 
-meaning that final numbers differ from initial estimates by only a tiny share of total employment.
+**`r scales::percent(mean(ces_joined$abs_pct_revision, na.rm = TRUE), accuracy = 0.01)`**. meaning that final numbers differ from initial estimates by only a tiny share of total employment.
 
 ### Plot 4: Revisions by month
 ```{r}
