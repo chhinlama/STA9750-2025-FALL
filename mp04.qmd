@@ -36,6 +36,7 @@ cat("
 
 ```
 
+
 # Data Acquisition
 ## Task 1: Download CES Total Nonfarm Payroll
 
@@ -449,12 +450,7 @@ p1 <- ces_joined |>
 p1
 ```
 The comparison of first and final CES employment estimates shows that revisions are generally modest.  
-The largest upward revision occurs in **`r scales::comma(ces_joined$revision[which.max(ces_joined$revision)])` jobs**, in  
-**`r ces_joined$date[which.max(ces_joined$revision)]`**, while the largest downward revision is  
-**`r scales::comma(ces_joined$revision[which.min(ces_joined$revision)])` jobs** in  
-**`r ces_joined$date[which.min(ces_joined$revision)]`**.  
-Despite these outliers, the two series track extremely closely, showing that revisions rarely  
-change the overall employment trend.
+The largest upward revision occurs in **`r scales::comma(ces_joined$revision[which.max(ces_joined$revision)])` jobs**, in **`r ces_joined$date[which.max(ces_joined$revision)]`**, while the largest downward revision is **`r scales::comma(ces_joined$revision[which.min(ces_joined$revision)])` jobs** in **`r ces_joined$date[which.min(ces_joined$revision)]`**. Despite these outliers, the two series track extremely closely, showing that revisions rarely  change the overall employment trend.
 
 ### Plot 2: Raw revisions over time 
 ```{r}
@@ -476,12 +472,8 @@ p2 <- ggplot(ces_joined, aes(x = date, y = revision)) +
 
 p2
 ```
-Monthly CES revisions cluster tightly around zero.  
-Across the full series, the mean revision is **`r scales::comma(mean(ces_joined$revision, na.rm = TRUE))` jobs**,  
-indicating no systematic bias upward or downward.  
-Most revisions fall between **–200,000 and +200,000**, but notable exceptions — such as  
-**`r scales::comma(min(ces_joined$revision))` jobs** in **`r ces_joined$date[which.min(ces_joined$revision)]`** —  
-correspond to extraordinary economic shocks rather than methodological problems.
+Monthly CES revisions cluster tightly around zero. Across the full series, the mean revision is **`r scales::comma(mean(ces_joined$revision, na.rm = TRUE))` jobs**, indicating no systematic bias upward or downward. 
+Most revisions fall between **–200,000 and +200,000**, but notable exceptions - such as **`r scales::comma(min(ces_joined$revision))` jobs** in **`r ces_joined$date[which.min(ces_joined$revision)]`** - correspond to extraordinary economic shocks rather than methodological problems.
 
 ### Plot 3: Absolute percent revisions
 ```{r}
@@ -503,8 +495,7 @@ p3 <- ggplot(ces_joined, aes(x = date, y = abs_pct_revision)) +
 p3
 ```
 Absolute percent revisions remain extremely small throughout most of the series.  
-The average absolute percent revision is 
-**`r scales::percent(mean(ces_joined$abs_pct_revision, na.rm = TRUE), accuracy = 0.01)`**. meaning that final numbers differ from initial estimates by only a tiny share of total employment.
+The average absolute percent revision is **`r scales::percent(mean(ces_joined$abs_pct_revision, na.rm = TRUE), accuracy = 0.01)`** meaning that final numbers differ from initial estimates by only a tiny share of total employment.
 
 ### Plot 4: Revisions by month
 ```{r}
@@ -526,12 +517,10 @@ p4 <- ces_joined |>
 
 p4
 ```
-Absolute revisions show mild seasonal structure: early-year months—such as  
-**January** and **February**—have slightly higher medians, consistent with BLS benchmarking cycles.  
+Absolute revisions show mild seasonal structure: early-year months-such as  
+**January** and **February**-have slightly higher medians, consistent with BLS benchmarking cycles.  
 However, the typical revision range stays tight across all months, with median revisions  
-between **`r scales::comma(median(ces_joined$abs_revision, na.rm = TRUE))`** and  
-**`r scales::comma(quantile(ces_joined$abs_revision, 0.75, na.rm = TRUE))`**.  
-This indicates that no single month disproportionately contributes to revision volatility.
+between **`r scales::comma(median(ces_joined$abs_revision, na.rm = TRUE))`** and **`r scales::comma(quantile(ces_joined$abs_revision, 0.75, na.rm = TRUE))`**. This indicates that no single month disproportionately contributes to revision volatility.
 
 # Statistical Analysis
 
@@ -835,4 +824,4 @@ The claim that CES “lost reliability” after 2020 is exaggerated.
 
 # Conclusion
 
-Overall, this project shows that CES revisions remain historically normal, statistically stable, and largely unbiased, even during periods of heightened political scrutiny. While extreme events like the COVID-19 shock produced unusually large adjustments, the long-run pattern reveals that most revisions are small relative to total employment and evenly distributed between positive and negative changes. Formal hypothesis tests provide no evidence of a structural break or systematic bias in the post-2020 or McEntarfer-era data. Together, these findings indicate that concerns about the BLS “manipulating” or “misreporting” job numbers are not supported by the empirical record. Instead, the data confirm that CES functions as intended—producing timely early estimates that improve as more information becomes available.
+Overall, this project shows that CES revisions remain historically normal, statistically stable, and largely unbiased, even during periods of heightened political scrutiny. While extreme events like the COVID-19 shock produced unusually large adjustments, the long-run pattern reveals that most revisions are small relative to total employment and evenly distributed between positive and negative changes. Formal hypothesis tests provide no evidence of a structural break or systematic bias in the post-2020 or McEntarfer-era data. Together, these findings indicate that concerns about the BLS “manipulating” or “misreporting” job numbers are not supported by the empirical record. Instead, the data confirm that CES functions as intended-producing timely early estimates that improve as more information becomes available.
