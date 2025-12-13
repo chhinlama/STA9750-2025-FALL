@@ -19,6 +19,8 @@ website:
         text: Mini Project 3
       - href: mp04.qmd
         text: Mini Project 4
+      - href: Course_Project_SQ4.qmd
+        text: Individual Report
     
 format:
   html:
