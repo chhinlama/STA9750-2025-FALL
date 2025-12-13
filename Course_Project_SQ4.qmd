@@ -265,7 +265,7 @@ ggplot(nyc_trend_quarter, aes(x = date, y = total_employment)) +
   )
 
 ```
-Before COVID, NYC’s food-service and drinking-place sector consistently employed around **300,000 jobs per quarter.** In **2020 Q2**, employment collapses to roughly **110,000 jobs**, reflecting shutdowns of indoor dining and nightlife. After that trough, employment gradually recovers through 2021 and 2022, and by 2023 quarterly employment is again near **pre-COVID levels.** These are quarterly average jobs, not unique workers.
+Before COVID, NYC’s food-service and drinking-place sector consistently employed around **300,000 jobs per quarter.** In **2020 Q2**, employment collapses to roughly **110,000 jobs**, reflecting shutdowns of indoor dining and nightlife. After that trough, employment gradually recovers through 2021 and 2022, and by 2023 quarterly employment is again near **pre-COVID levels.**
 
 ## 4.2 Year-over-year change visualization
 
@@ -359,7 +359,7 @@ ggplot(nyc_borough_summary,
   )
 
 ```
-This plot visually reinforces that nightlife-related employment is heavily concentrated in a small number of boroughs. Manhattan dominates, Brooklyn and Queens form a substantial second tier, and the Bronx and Staten Island have smaller but still non-trivial levels of QCEW employment in this sector. This reflects where nightlife establishments are physically concentrated, not where workers live.
+This plot visually reinforces that nightlife-related employment is heavily concentrated in a small number of boroughs. Manhattan dominates, Brooklyn and Queens form a substantial second tier, and the Bronx and Staten Island have smaller but still non-trivial levels of QCEW employment in this sector. Importantly, these figures reflect the location of workplaces and establishments, rather than the residential location of workers.
 
 ## 5.3 Borough-level trends over time
 
