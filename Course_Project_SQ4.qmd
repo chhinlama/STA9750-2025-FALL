@@ -265,7 +265,9 @@ ggplot(nyc_trend_quarter, aes(x = date, y = total_employment)) +
   )
 
 ```
-Before COVID, NYC’s food-service and drinking-place sector consistently employed around **300,000 jobs per quarter.** In **2020 Q2**, employment collapses to roughly **110,000 jobs**, reflecting shutdowns of indoor dining and nightlife. After that trough, employment gradually recovers through 2021 and 2022, and by 2023 quarterly employment is again near **pre-COVID levels.**
+Prior to the COVID-19 pandemic, employment in this sector was both large and stable, consistently hovering around **300,000 jobs per quarter.** This stability highlights the central role that restaurants, bars, and related venues play in supporting New York City’s nightlife economy and its broader labor market.
+
+The sharp **drop in 2020 Q2** reflects the impact of pandemic-related shutdowns, when employment fell to roughly **110,000 jobs** as indoor dining and nightlife activity were largely suspended. The recovery that follows is gradual rather than immediate, reflecting phased reopenings, capacity limits, and changes in consumer behavior. By 2023, employment levels had largely returned to near pre-pandemic levels, illustrating both the vulnerability of nightlife-dependent work to external shocks and the sector’s longer-term resilience.
 
 ## 4.2 Year-over-year change visualization
 
@@ -290,7 +292,7 @@ ggplot(nyc_year_summary,
   )
 
 ```
-This summarizes the COVID-era pattern numerically: a **41% decline** in job-quarters from 2019 to 2020, followed by a strong rebound that brings the sector back to within **4% of its pre-pandemic volume** by 2023.
+The above plot summarizes the COVID-era pattern numerically: a **41% decline** in job-quarters from 2019 to 2020, followed by a strong rebound that brings the sector back to within **4% of its pre-pandemic volume** by 2023.
 
 Taken together, these citywide trends show how dramatically the nightlife workforce contracted in 2020 and how steadily it rebuilt through 2023.
 
@@ -404,9 +406,9 @@ ggplot(nyc_borough_index,
   )
 
 ```
-By indexing each borough’s employment to **100 in 2019 Q1**, we can compare proportional changes on a common scale. In this figure, `r nyc_borough_summary$borough[1]` drops to roughly **30-40** at the trough in 2020, while outer boroughs bottom out closer to the **45-60** range. This suggests that Manhattan not only loses the most jobs in absolute terms, but also experiences the largest **percentage decline** in nightlife-relevant employment. The flatter line for smaller boroughs like Staten Island largely reflects their lower starting levels, not the absence of a COVID shock.
+By indexing each borough’s employment to **2019 Q1 = 100,** this figure highlights proportional changes in nightlife-related employment rather than absolute job counts. All boroughs experience a sharp decline in 2020, but the magnitude differs substantially. Manhattan falls to roughly **30-40% of its pre-COVID level,** while outer boroughs such as Brooklyn, Queens, and the Bronx bottom out closer to the **45-60 range.** This indicates that Manhattan not only lost the most jobs in absolute terms, but also experienced the **largest relative shock,** reflecting its heavier reliance on dense nightlife, tourism, and office-driven demand.
 
-Overall, Manhattan consistently employs the largest share of nightlife workers, with Brooklyn and Queens forming the next-largest base of labor supporting the city’s nighttime economy.
+Recovery paths also diverge across boroughs. Brooklyn and Queens rebound more quickly and surpass their pre-COVID baselines by 2022–2023, while Manhattan’s recovery is slower and more uneven, consistent with prolonged disruptions to tourism and commuter patterns. Staten Island shows a flatter trajectory, largely due to its smaller employment base rather than insulation from the shock. Overall, the figure underscores that while Manhattan remains the city’s primary hub of nightlife employment, outer boroughs play an increasingly important role in the post-pandemic nightlife workforce.
 
 # 6. Focus on COVID: 2019 vs 2020 vs 2023
 
@@ -469,7 +471,7 @@ It’s important to be clear about what this data captures and what it does not.
 
 ## 7.1 What the data tells us
 
-From the QCEW NAICS 722 dataset, we can confidently say:
+From the QCEW NAICS 722 dataset, we can confidently describe **the scale, distribution, and temporal evolution** of nightlife-relevant employment:
 
 - The scale of employment in Food Services & Drinking Places in NYC, by borough and quarter.
 
@@ -495,7 +497,7 @@ QCEW is not a schedule-level dataset. It does not tell us:
 
 - The precise mix of occupations (servers vs bartenders vs cooks) within each establishment.
 
-For this project, I treat NAICS 722 employment as a **proxy** for the workforce that makes nightlife possible, knowing that:
+For this project, NAICS 722 employment is treated as a **proxy** for the workforce that makes nightlife possible, with the understanding that:
 
 - Many of these jobs involve evening and late-night hours,
 
@@ -515,4 +517,4 @@ Key findings include:
 
 - Geographic concentration, with `r nyc_borough_summary$borough[1]` and `r nyc_borough_summary$borough[2]` accounting for `r scales::percent(sum(nyc_borough_summary$share_of_city_total[1:2]))` of all job-quarters in Food Services & Drinking Places.
 
-Together, these results show that **tens of thousands of jobs per quarter** - primarily concentrated in Manhattan and Brooklyn - support the city’s vibrant nightlife economy. Although QCEW does not capture shift timing, it provides a clear, data-driven measure of the scale and distribution of the workforce that enables NYC to “party” every night. The sharp COVID decline and subsequent recovery highlight both the vulnerability and resilience of these workers, who play an essential role in the city’s cultural and economic life. These employment patterns also anchor the broader group project by revealing the workforce underlying NYC’s nightlife complaints, crime trends, and transportation flows.
+Together, these results show that **tens of thousands of jobs per quarter** - primarily concentrated in Manhattan and Brooklyn - support the city’s vibrant nightlife economy. Although QCEW does not capture shift timing, it provides a clear, data-driven measure of the scale and distribution of the workforce that enables NYC to “party” every night. The sharp COVID decline and subsequent recovery highlight both the vulnerability and resilience of these workers, who play an essential role in the city’s cultural and economic life. These employment patterns also anchor the broader group project by revealing the workforce that underlies NYC’s nightlife-related complaints, crime patterns, and late-night transportation flows.
