@@ -1,7 +1,7 @@
 ---
 title: "Who’s Working While the City’s Partying?"
 subtitle: "Employment in NYC Food Services & Drinking Places (2019-2023)"
-author: "Chhin Lama"
+author: "Chhin Lama - Nightshift Analysts"
 format: html
 toc: true
 ---
